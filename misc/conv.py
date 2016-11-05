@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import re, sys
+import re, sys, math
+
+# How much previous days count
+DECAY = 1.5
 
 header = r"""
 <html>
@@ -56,6 +59,18 @@ for l in sys.stdin.readlines():
         perfs[cur_day] = []
         continue
 
+def hist2str(history):
+    ret = '<span style="display:block; margin:1px 4px 1px 2px; font-size:1.1em; letter-spacing:-0.25em">'
+    n, step = 0, 0.125
+    while n <= len(history) - 1:
+        t = n - int(n)
+        r = history[int(n)] * (1 - t) + history[math.ceil(n)] * t
+        style = ' top:%.2fpx; color:#%x%x3' % (7 - r * 15, 15 - r * 12.9, 3 + r * 7.9)
+        ret += '<span style="position:relative;%s">%s</span>' % (style, '•')
+        n += step
+    ret += '</span>'
+    return ret
+
 def gr2str(grade):
     lut = { '4':      '#5189f1',
             '4+':     '#3169e1',
@@ -80,33 +95,40 @@ def gr2str(grade):
 
 def res2str(result):
     if result == 'OK':
-        return '<span style="color:#30aa30">✔</span>'
+        return '<span style="color:#3a3">✔</span>'
     else:
         #return '<span style="color:red">✗</span>'
-        return '<span style="color:red">×</span>'
+        return '<span style="color:#f33">×</span>'
 
 print(header)
 
 print('<table><tr><th>Grade</th>')
 for d in days:
     print('<th>' + d + '</th>')
-print('</tr>')
+print('<th>Trend</th><th>Avg</th></tr>')
 
 for g in reversed(sorted(grades)):
     print('<tr>' + gr2str(g))
+    history, total, weight = [], 0, 0
     for d in days:
         s = '<td>'
         for voie, color, grade, result, comm in perfs[d]:
             if grade == g:
                 s += res2str(result)
+                if result == 'OK':
+                    total += 1
+                weight += 1
+        history += [total / (weight + 1e-8)]
+        total, weight = total / DECAY, weight / DECAY
         s += '</td>'
         print(s)
-    print('</tr>')
+    ratio = total / weight * 100.0
+    print('<td>%s</td><td>%.0f%%</td></tr>' % (hist2str(history), ratio, ))
 print('</table>')
 
 print('<p></p>')
 
-print('<table><tr><th>Route</th><th>Grade</th><th></th><th>Comments</th>')
+print('<table><tr><th>Route</th><th>Grade</th><th>History</th><th>Comments</th>')
 aggregated = {}
 comments = {}
 for d in days:
