@@ -20,7 +20,7 @@
  65 violette 5a     OK
  24 orange   5c+/6a --  à 50% (une prise de plus que sam)
  25 bleue    5b     OK
- 82 saumon   6a     --  à 30%
+ 82 orange   6a     --  à 30%
  82 verte    5c     OK
 112 verte    5b     OK
  37 verte    5c+    --  cramé
@@ -33,7 +33,7 @@
  85 rouge    5a     OK
  24 orange   5c+/6a --  à 50% (comme d’hab)
  80 beige    5c     --  à 80%
- 61 jaune    5c+/6a --  à 30%
+ 62 jaune    5c+/6a --  à 30%
  34 violette 5c+    --  à 30%
  44 bleue    5b+    --  à 50%
  85 verte    5b     --  à 80%

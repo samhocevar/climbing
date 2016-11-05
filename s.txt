@@ -2,10 +2,10 @@
 29 septembre: 9/14
 
  50 saumon   5c+    --   pas réussi la dernière prise
- 50 noir     5a     OK
+ 50 noire    5a     OK
  49 jaune    5b+/c  OK   difficile
  49 verte    5b     OK
- 81 blanche  5c     --   arrivé en haut mais pas sûr d’avoir fini
+ 81 blanche  5c     OK   arrivé en haut mais pas sûr d’avoir fini
  85 verte    5b     OK   LA verte
  84 violette 6a+    --   à 30%
  84 beige    5b+    --   à 30%
@@ -20,7 +20,7 @@
 
  85 verte  5b    OK
  85 jaune  6a+   OK   difficile
- 35 jaune  5c    OK
+ 36 jaune  5c    OK
  35 rouge  6a    --   à 70%
  50 saumon 5c+   OK
  50 bleue  6a    --
@@ -38,7 +38,7 @@
  82 verte    5c     OK
  82 orange   6a     --  à 30%
  84 violette 6a+    --  à 30%
- 35 jaune    5c     OK
+ 36 jaune    5c     OK
  24 orange   5c+/6a --  à 50%
  23 bleue    5c     --  à 50%
  24 orange   5c+/6a --  à 50%
@@ -56,7 +56,7 @@
 112 verte    5b     OK
  37 verte    5c+    OK
  34 violette 5c+    OK
- 35 jaune    5c     OK
+ 36 jaune    5c     OK
  85 verte    5b     OK
  83 rouge    5c+    --  à 80% (trop crevé)
 
@@ -66,7 +66,7 @@
  85 jaune    6a+    OK
  24 orange   5c+/6a --  à 50% (comme d’hab)
  80 beige    5c     OK
- 61 jaune    5c+/6a OK
+ 62 jaune    5c+/6a OK
  34 violette 5c+    OK
  36 jaune    5c     --  à 70%
  44 bleue    5b+    OK
@@ -90,7 +90,7 @@
 2 novembre: 10/12
 
  62 jaune     5c+/6a OK
- 66 blanche   5c+    --  même pas foutu de pécho la 3e prise
+ 65 blanche   5c+    --  même pas foutu de pécho la 3e prise
  65 jaune     6a+    --  30%
  34 violette  5c+    OK
  34 verte     6a     OK
