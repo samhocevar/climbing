@@ -8,6 +8,7 @@ clean:
 
 extra:
 	cat s.html | sed \
+          -e 's/.*a href.*//' \
 	  -e 's/beige/beige/g' \
 	  -e 's/blanche/white/g' \
 	  -e 's/bleue/blue/g' \

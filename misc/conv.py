@@ -25,6 +25,11 @@ th {
 </style>
 </head>
 <body>
+<div style="float:right">
+  <a href="jo.html">jo</a> |
+  <a href="jy.html">jy</a> |
+  <a href="s.html">s</a>
+</div>
 """
 
 footer = r"""
@@ -60,6 +65,7 @@ for l in sys.stdin.readlines():
         continue
 
 def hist2str(history):
+    history = [0] + history
     ret = '<span style="display:block; margin:1px 4px 1px 2px; font-size:1.1em; letter-spacing:-0.25em">'
     n, step = 0, 0.125
     while n <= len(history) - 1:
@@ -93,12 +99,31 @@ def gr2str(grade):
     c = lut[grade] if grade in lut else 'white'
     return '<td style="background: ' + c + '">' + grade + '</td>'
 
+def loc2str(voie, color):
+    lut = { 'beige':    ['#d97', '#000'],
+            'blanche':  ['#fff', '#000'],
+            'bleue':    ['#68e', '#000'],
+            'jaune':    ['#dd4', '#000'],
+            'noire':    ['#333', '#eee'],
+            'orange':   ['#ea4', '#000'],
+            'rose':     ['#f9a', '#000'],
+            'rouge':    ['#e44', '#000'],
+            'saumon':   ['#e73', '#000'],
+            'verte':    ['#6d6', '#000'],
+            'violette': ['#a5e', '#000'],
+          }
+    style = lut[color] if color in lut else lut['blanche']
+    return '<td style="background:%s;color:%s">%d %s</td>' % (style[0], style[1], voie, color)
+
 def res2str(result):
     if result == 'OK':
-        return '<span style="color:#3a3">✔</span>'
+        #return '<span style="color:#3a3">✔</span>'
+        return '<span style="color:#3a3">✘</span>'
+        #return '<span style="color:#3a3">☒</span>'
     else:
         #return '<span style="color:red">✗</span>'
-        return '<span style="color:#f33">×</span>'
+        #return '<span style="color:#f33">×</span>'
+        return '<span style="color:#f33">☐</span>'
 
 print(header)
 
@@ -128,7 +153,7 @@ print('</table>')
 
 print('<p></p>')
 
-print('<table><tr><th>Route</th><th>Grade</th><th>History</th><th>Comments</th>')
+print('<table><tr><th>Route</th><th>Grade</th><th>History</th><th>Notes</th>')
 aggregated = {}
 comments = {}
 for d in days:
@@ -149,7 +174,7 @@ for g in reversed(sorted(grades)):
         voie, color, grade = key
         if grade != g:
             continue
-        print('<tr><td>' + str(voie) + ' ' + color + '</td>' + gr2str(g) + '<td>' + val + '</td><td>' + comments[key] + '</td></tr>')
+        print('<tr>' + loc2str(voie, color) + gr2str(g) + '<td>' + val + '</td><td>' + comments[key] + '</td></tr>')
 
 print('</table>')
 

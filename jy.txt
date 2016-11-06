@@ -4,7 +4,7 @@
  83 noire    4      OK
  83 rouge    5c+    --  pas réussi la dernière prise
  85 verte    5b     OK
- 84 violette 6a+    --  vautré comme une grosse otarie bourrée à la bière dès la 2e prise
+ 84 violette 6a+    --  bloqué dès la 2e prise
  82 verte    5c     --  à 30%
  36 noire    5a     OK
  24 verte    5a     OK

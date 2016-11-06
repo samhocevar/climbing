@@ -6,7 +6,7 @@
  49 jaune    5b+/c  OK   difficile
  49 verte    5b     OK
  81 blanche  5c     OK   arrivé en haut mais pas sûr d’avoir fini
- 85 verte    5b     OK   LA verte
+ 85 verte    5b     OK
  84 violette 6a+    --   à 30%
  84 beige    5b+    --   à 30%
  85 rouge    5a     OK   facile

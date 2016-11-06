@@ -10,7 +10,7 @@
  30 bleue   5a  --  à 60%
  25 jaune   5a  --  pas réussi les deux dernières prises
  38 blanche 5a  --  pas réussi les quelques dernières prises
- 81 noire   4b  --  trop crevé
+ 81 noire   4+  --  trop crevé / vraie cotation : 4b
 
 19 octobre: 5/10
 
@@ -21,7 +21,7 @@
  82 verte    5c --  à 30%
  81 bleue    5a OK
 112 verte    5b --  à 40%
- 85 rouge    5a OK  première fois
+ 85 rouge    5a OK
  49 verte    5a --  à 60%
  38 blanche  5a --
 
