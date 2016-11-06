@@ -1,6 +1,8 @@
 
 HTML = s.html jo.html jy.html
 
+CONV = ./misc/conv.py
+
 all: $(HTML) extra
 
 clean:
@@ -21,9 +23,10 @@ extra:
 	  -e 's/verte/green/g' \
 	  -e 's/violette/purple/g' \
 	> ../climbing.html
+	cat $(HTML:%.html=%.txt) | $(CONV) > all.html
 
 %.html: %.txt
-	./misc/conv.py < $^ > $@
+	$(CONV) < $^ > $@
 
 SUFFIXES = .html
 

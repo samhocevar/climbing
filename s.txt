@@ -7,8 +7,8 @@
  49 verte    5b     OK
  81 blanche  5c     OK   arrivé en haut mais pas sûr d’avoir fini
  85 verte    5b     OK
- 84 violette 6a+    --   à 30%
- 84 beige    5b+    --   à 30%
+ 84 violette 6a+    --   30%
+ 84 beige    5b+    --   30%
  85 rouge    5a     OK   facile
  27 verte    4+     OK   facile
  25 bleue    5b     OK   facile
@@ -21,58 +21,58 @@
  85 verte  5b    OK
  85 jaune  6a+   OK   difficile
  36 jaune  5c    OK
- 35 rouge  6a    --   à 70%
+ 35 rouge  6a    --   70%
  50 saumon 5c+   OK
  50 bleue  6a    --
  49 jaune  5b+/c OK
  49 verte  5b    OK   facile
  81 jaune  5b+   OK   utilisé l’arête par erreur
  81 jaune  5b+   OK
- 37 rose   6a+   --   à 30%
- 37 verte  5c+   --   à 60%
+ 37 rose   6a+   --   30%
+ 37 verte  5c+   --   60%
 
 12 octobre: 4/11
 
  83 rouge    5c+    OK
  85 verte    5b     OK
  82 verte    5c     OK
- 82 orange   6a     --  à 30%
- 84 violette 6a+    --  à 30%
+ 82 orange   6a     --  30%
+ 84 violette 6a+    --  30%
  36 jaune    5c     OK
- 24 orange   5c+/6a --  à 50%
- 23 bleue    5c     --  à 50%
- 24 orange   5c+/6a --  à 50%
+ 24 orange   5c+/6a --  50%
+ 23 bleue    5c     --  50%
+ 24 orange   5c+/6a --  50%
  37 verte    5c+    --  pas réussi la dernière prise
  85 verte    5b     --  trop crevé
 
 19 octobre: 9/12
 
- 65 blanche  5c+    --  à 20%
+ 65 blanche  5c+    --  20%
  65 violette 5a     OK
- 24 orange   5c+/6a --  à 50% (une prise de plus que la dernière fois)
+ 24 orange   5c+/6a --  50% (une prise de plus que la dernière fois)
  25 bleue    5b     OK
- 82 orange   6a     OK  (première fois)
+ 82 orange   6a     OK  première fois
  82 verte    5c     OK
 112 verte    5b     OK
  37 verte    5c+    OK
  34 violette 5c+    OK
  36 jaune    5c     OK
  85 verte    5b     OK
- 83 rouge    5c+    --  à 80% (trop crevé)
+ 83 rouge    5c+    --  80% (trop crevé)
 
 26 octobre: 8/11
 
  89 violette 5b     OK
  85 jaune    6a+    OK
- 24 orange   5c+/6a --  à 50% (comme d’hab)
+ 24 orange   5c+/6a --  50% (comme d’hab)
  80 beige    5c     OK
  62 jaune    5c+/6a OK
  34 violette 5c+    OK
- 36 jaune    5c     --  à 70%
+ 36 jaune    5c     --  70%
  44 bleue    5b+    OK
  85 verte    5b     OK
  84 bleue    5b     OK
- 82 verte    5c     --  à 70% (crevé)
+ 82 verte    5c     --  70% (crevé)
 
 1 novembre: 8/10
 
@@ -82,10 +82,10 @@
  80 beige    5c  OK
  31 saumon   5c  OK
  34 violette 5c+ OK
- 34 verte    6a  --  à 80% (à refaire !)
+ 34 verte    6a  --  80% (à refaire !)
  37 verte    5c+ OK
  57 bleue    5c  OK
- 84 violette 6a+ --  à 10% (lol)
+ 84 violette 6a+ --  10% (lol)
 
 2 novembre: 10/12
 

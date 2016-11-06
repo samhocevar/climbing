@@ -1,29 +1,37 @@
 
+29 septembre: -
+
+5 octobre: -
+
 12 octobre: 3/10
 
  83 noire   4   OK
- 83 rouge   5c+ --  à 60%
- 85 verte   5b  --  à 60%
+ 83 rouge   5c+ --  60%
+ 85 verte   5b  --  60%
  85 rouge   5a  OK  première fois
  36 noire   5a  OK
- 24 verte   5a  --  à 50%
- 30 bleue   5a  --  à 60%
+ 24 verte   5a  --  50%
+ 30 bleue   5a  --  60%
  25 jaune   5a  --  pas réussi les deux dernières prises
  38 blanche 5a  --  pas réussi les quelques dernières prises
- 81 noire   4+  --  trop crevé / vraie cotation : 4b
+ 81 noire   4b  --  trop crevé
 
 19 octobre: 5/10
 
  65 bleue    4+ OK
  65 violette 5a OK
  24 verte    5a OK
- 25 bleue    5b --  à 30%
- 82 verte    5c --  à 30%
+ 25 bleue    5b --  30%
+ 82 verte    5c --  30%
  81 bleue    5a OK
-112 verte    5b --  à 40%
+112 verte    5b --  40%
  85 rouge    5a OK
- 49 verte    5a --  à 60%
+ 49 verte    5a --  60%
  38 blanche  5a --
+
+26 octobre: -
+
+1 novembre: -
 
 2 novembre: 4/7
 
@@ -34,5 +42,5 @@
  49 verte 5a  OK  à refaire en moins laborieux
  44 rouge 5a+ --  passage difficile à 30% à réessayer
  44 rouge 5a+ --  pareil
- 78 verte 5a  --  à 80%
+ 78 verte 5a  --  80%
 
