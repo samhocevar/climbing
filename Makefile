@@ -1,15 +1,21 @@
 
-HTML = s.html jo.html jy.html
+SRC = s.txt jo.txt jy.txt
+
+HTML = $(SRC:%.txt=generated/%.html)
+
+# Test crap
+HTML += $(SRC:%.txt=generated/%.en.html)
+HTML += generated/all.html
 
 CONV = ./misc/conv.py
 
-all: $(HTML) extra
+all: $(HTML)
 
 clean:
 	rm -f $(HTML)
 
-extra:
-	cat s.html | sed \
+%.en.html: %.html
+	cat $^ /dev/null | sed \
           -e 's/.*a href.*//' \
 	  -e 's/beige/beige/g' \
 	  -e 's/blanche/white/g' \
@@ -22,11 +28,11 @@ extra:
 	  -e 's/saumon/salmon/g' \
 	  -e 's/verte/green/g' \
 	  -e 's/violette/purple/g' \
-	> ../climbing.html
-	cat $(HTML:%.html=%.txt) | $(CONV) > all.html
+	> $@
 
-%.html: %.txt
+generated/all.html: $(SRC)
+	cat $^ /dev/null | $(CONV) > $@
+
+generated/%.html: %.txt
 	$(CONV) < $^ > $@
-
-SUFFIXES = .html
 

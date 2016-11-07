@@ -84,7 +84,7 @@ def hist2str(history):
     while n <= len(history) - 1:
         t = n - int(n)
         r = history[int(n)] * (1 - t) + history[math.ceil(n)] * t
-        style = ' top:%.2fpx; color:#%x%x3' % (7 - r * 15, 15 - max(r * 2 - 1, 0) * 15.9, 0 + min(r * 2, 1) * 12.9)
+        style = ' top:%.2fpx; color:#%x%x3' % (7 - r * 15, int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
         ret += '<span style="position:relative;%s">%s</span>' % (style, ch)
         n += step
     ret += '</span>'
