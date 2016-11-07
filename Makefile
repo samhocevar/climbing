@@ -7,7 +7,8 @@ HTML = $(SRC:%.txt=generated/%.html)
 HTML += $(SRC:%.txt=generated/%.en.html)
 HTML += generated/all.html
 
-CONV = ./src/conv.py
+SED = sed -b
+CONV = PYTHONIOENCODING="UTF-8" ./src/conv.py
 
 all: $(HTML)
 
@@ -15,8 +16,8 @@ clean:
 	rm -f $(HTML)
 
 %.en.html: %.html
-	cat $^ /dev/null | sed \
-          -e 's/.*a href.*//' \
+	cat $^ /dev/null | $(SED) \
+	  -e 's/ *<.*a href.*>[ |]*//' \
 	  -e 's/beige/beige/g' \
 	  -e 's/blanche/white/g' \
 	  -e 's/bleue/blue/g' \
