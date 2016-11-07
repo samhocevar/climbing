@@ -7,7 +7,7 @@ HTML = $(SRC:%.txt=generated/%.html)
 HTML += $(SRC:%.txt=generated/%.en.html)
 HTML += generated/all.html
 
-CONV = ./misc/conv.py
+CONV = ./src/conv.py
 
 all: $(HTML)
 
