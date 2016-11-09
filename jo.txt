@@ -44,3 +44,15 @@
  44 rouge 5a+ --  pareil
  78 verte 5a  --  80%
 
+9 novembre: -
+
+ 85 rouge 5a OK
+ 26 jaune 5a --  dernière prise
+ 35 noire 5b OK
+ 44 rouge 5a+ --  30%
+ 44 rouge 5a+ --  60% !
+ 49 verte 5a OK
+ 78 noire 5b OK
+ 73 noire 5b --  30%
+ 72 jaune 5a --  50%
+

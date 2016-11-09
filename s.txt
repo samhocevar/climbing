@@ -95,7 +95,7 @@
  34 violette  5c+    OK
  34 verte     6a     OK
  31 saumon    5c     OK
- 49 blanche   6a     OK  vérifier la cotation
+ 49 blanche   5c     OK  vérifier la cotation
  46 noire     5c     OK
  44 rouge     5a+    OK
  42 orange    5c+    OK
@@ -103,3 +103,13 @@
  82 orange    6a     OK
  36 jaune     5c     OK
 
+9 novembre: 6/7
+
+ 84 beige    5b+    OK
+ 35 rouge    6a     OK
+ 82 verte    5c     OK
+ 50 saumon   5c+    OK
+ 83 rouge    5c+    OK
+ 50 bleue    6a     OK
+ 50 bleue    6a     OK
+ 72 blanche  5c/6a  --

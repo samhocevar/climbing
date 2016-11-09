@@ -57,3 +57,13 @@
 
 2 novembre: -
 
+9 novembre: -
+
+ 85 rouge 5a OK
+ 26 jaune 5a OK
+ 82 verte 5c -- 70%
+ 44 rouge 5a+ OK
+ 83 rouge 5c+ -- 80%
+ 44 bleue 5b+ -- 60%
+ 78 noire 5b OK
+ 73 noire 5b OK

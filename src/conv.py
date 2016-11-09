@@ -60,6 +60,8 @@ for l in sys.stdin.readlines():
         route, color, grade, result, comm = m.groups(1)
         if grade == '4b':
             grade = '4+'
+        if grade == '5c/6a':
+            grade = '5c+/6a'
         grades[grade] = True
         perfs[cur_day] += [(int(route), color, grade, result, comm)]
         continue
