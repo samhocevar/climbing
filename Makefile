@@ -1,10 +1,11 @@
 
-SRC = s.txt jo.txt jy.txt
+SRC = db.txt
+NAMES = jo jy s
 
-HTML = $(SRC:%.txt=generated/%.html)
+HTML = $(NAMES:%=generated/%.html)
 
 # Test crap
-HTML += $(SRC:%.txt=generated/%.en.html)
+HTML += $(NAMES:%=generated/%.en.html)
 HTML += generated/all.html
 
 SED = sed -b
@@ -15,7 +16,7 @@ all: $(HTML)
 clean:
 	rm -f $(HTML)
 
-%.en.html: %.html
+generated/%.en.html: generated/%.html
 	cat $^ /dev/null | $(SED) \
 	  -e 's/ *<.*a href.*>[ |]*//' \
 	  -e 's/beige/beige/g' \
@@ -31,9 +32,9 @@ clean:
 	  -e 's/violette/purple/g' \
 	> $@
 
+generated/%.html: $(SRC)
+	cat $^ /dev/null | grep -i '^\(#\|$*\)' | $(CONV) > $@
+
 generated/all.html: $(SRC)
 	cat $^ /dev/null | $(CONV) > $@
-
-generated/%.html: %.txt
-	$(CONV) < $^ > $@
 

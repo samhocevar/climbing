@@ -54,19 +54,19 @@ for l in sys.stdin.readlines():
     if not l:
         continue
 
-    r = r'\s*(\d*)\s*(\w*)\s*([+/0-9a-z]*)\s*(OK|--)\s*(.*)'
+    r = r'\s*(\w*)\s*(\d*)\s*(\w*)\s*([+/0-9a-z]*)\s*(OK|--)\s*(.*)'
     m = re.match(r, l)
     if m:
-        route, color, grade, result, comm = m.groups(1)
+        name, route, color, grade, result, comm = m.groups(1)
         if grade == '4b':
             grade = '4+'
         if grade == '5c/6a':
             grade = '5c+/6a'
         grades[grade] = True
-        perfs[cur_day] += [(int(route), color, grade, result, comm)]
+        perfs[cur_day] += [(name, int(route), color, grade, result, comm)]
         continue
 
-    r = r'\s*([a-z0-9]* \w\w\w)\w*: *(.*)'
+    r = r'^###\s*([a-z0-9]* \w\w\w)\w*:*\s*(.*)'
     m = re.match(r, l)
     if m:
         date, comment = m.groups(1)
@@ -76,6 +76,8 @@ for l in sys.stdin.readlines():
         if cur_day not in perfs:
             perfs[cur_day] = []
         continue
+
+    print('ignored:', l)
 
 def hist2str(history):
     #ch = '•'
@@ -106,7 +108,7 @@ gr2str_lut = {
     '6a':     '#eeeea0',
     '6a+':    '#dede80',
     '6b':     '#cece60',
-#    '6b+':    '#bebe40',
+    '6b+':    '#bebe40',
 #    '6c':     '#aeae20',
 #    '6c+':    '#9e9e00', # LOL
 }
@@ -157,11 +159,11 @@ print('</tr>')
 
 for g in reversed(sorted(gr2str_lut.keys())):
     print('<tr>' + gr2str(g))
-    history, total, weight, ratio = [], 0, 0, 0
+    history, total, weight, ratio, prev_ratio = [], 0, 0, 0, 0
     s = ''
     for d in days:
         s += '<td>'
-        for route, color, grade, result, comm in perfs[d]:
+        for name, route, color, grade, result, comm in perfs[d]:
             if grade == g:
                 s += res2str(result)
                 if result == 'OK':
@@ -188,12 +190,12 @@ print('<table><tr><th>Route</th><th>Grade</th><th>History</th><th>Notes</th>')
 aggregated = {}
 comments = {}
 for d in days:
-    for route, color, grade, result, comm in perfs[d]:
+    for name, route, color, grade, result, comm in perfs[d]:
         key = (route, color, grade)
         aggregated[key] = ''
         comments[key] = ''
 for d in days:
-    for route, color, grade, result, comm in perfs[d]:
+    for name, route, color, grade, result, comm in perfs[d]:
         key = (route, color, grade)
         aggregated[key] += res2str(result)
         if comm:
