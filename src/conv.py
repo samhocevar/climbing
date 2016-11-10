@@ -10,12 +10,17 @@ DECAY = 0.8
 # and how much failure in lower grades counts for higher grades
 OTHER_GRADE_WEIGHT = 0.5
 
+# Should we translate color names to English?
+ENGLISH = False
+
 # Parse command line
 NAME = None
-optlist, args = getopt.getopt(sys.argv[1:], '', ['name='])
+optlist, args = getopt.getopt(sys.argv[1:], '', ['name=', 'english'])
 for opt, arg in optlist:
     if opt == '--name':
         NAME = arg.lower()
+    if opt == '--english':
+        ENGLISH = True
 
 # Some HTML data
 header = r"""
@@ -23,20 +28,37 @@ header = r"""
 <head>
 <style>
 body {
-    background-color: #def;
+    background: #fff;
     font-family: sans-serif;
 }
-table { border-collapse: collapse; }
-table, tr, td, th {
-    border: 1px solid #205c8f;
+
+table {
+    margin: 30px 80px;
 }
+
+tr:nth-child(even) { background: #e8f4ff; }
+tr:nth-child(odd) { background: #f8fcff; }
+
 td {
     font-size: 0.9em;
+    padding: 2px;
 }
+
 th {
-    background-color: #205C8F;
-    color: white;
+    background: #bbb;
+    color: #555;
 }
+
+table {
+    border-collapse: separate;
+    border-spacing: 2px 3px;
+    min-width: 350px;
+}
+
+td.round { border-radius: 4px; }
+table tr:last-child td.round:first-child { border-bottom-left-radius: 4px; }
+table tr:last-child td.round:last-child { border-bottom-right-radius: 4px; }
+
 </style>
 </head>
 <body>
@@ -76,7 +98,7 @@ for l in sys.stdin.readlines():
     r = r'^###\s*([a-z0-9]* \w\w\w)\w*:*\s*(.*)'
     m = re.match(r, l)
     if m:
-        date, comment = m.groups(1)
+        date, _ = m.groups(1)
         cur_day = date
         if date not in days:
             days += [date]
@@ -84,19 +106,39 @@ for l in sys.stdin.readlines():
             perfs[cur_day] = []
         continue
 
+color_lut = {
+    'beige'    : 'beige',
+    'blanche'  : 'white',
+    'bleue'    : 'blue',
+    'jaune'    : 'yellow',
+    'noire'    : 'black',
+    'orange'   : 'orange',
+    'rose'     : 'pink',
+    'rouge'    : 'red',
+    'saumon'   : 'salmon',
+    'verte'    : 'green',
+    'violette' : 'purple',
+}
+
 def hist2str(history):
     #ch = '•'
     ch = '-'
     history = [0] + history
     ret = '<span style="display:block; margin:1px 4px 1px 2px; font-size:1.1em; letter-spacing:-0.25em">'
-    n, step = 0, 0.0625
+    prev_r, n, step = -1, 0, 0.0625
     while n <= len(history) - 1:
         t = n - int(n)
         r = history[int(n)] * (1 - t) + history[math.ceil(n)] * t
         style = ' top:%.2fpx; color:#%x%x3' % (7 - r * 15, int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
-        ret += '<span style="position:relative;%s">%s</span>' % (style, ch)
+        # Use \n here to avoid super long lines…
+        if int(64 * r) != int(64 * prev_r):
+            if prev_r != -1:
+                ret += '</span>'
+            ret += '<span\nstyle="position:relative;%s">' % (style)
+            prev_r = r
+        ret += ch
         n += step
-    ret += '</span>'
+    ret += '</span></span>'
     return ret
 
 gr2str_lut = {
@@ -120,7 +162,7 @@ gr2str_lut = {
 
 def gr2str(grade):
     c = gr2str_lut[grade] if grade in gr2str_lut else 'white'
-    return '<td style="background: ' + c + '">' + grade + '</td>'
+    return '<td class="round" style="background:' + c + '">' + grade + '</td>'
 
 def loc2str(route, color):
     lut = { 'beige':    ['#d97', '#000'],
@@ -136,7 +178,9 @@ def loc2str(route, color):
             'violette': ['#a5e', '#000'],
           }
     style = lut[color] if color in lut else lut['blanche']
-    return '<td style="background:%s;color:%s">%d&nbsp;%s</td>' % (style[0], style[1], route, color)
+    if ENGLISH and color in color_lut:
+        color = color_lut[color]
+    return '<td class="round" style="background:%s;color:%s">%d&nbsp;%s</td>' % (style[0], style[1], route, color)
 
 def ratio2str(ratio, prev_ratio):
     ret = '%.0f%% ' % (ratio * 100)
@@ -144,16 +188,17 @@ def ratio2str(ratio, prev_ratio):
     ret += '(=)' if delta == 0 else '(%+d)' % delta
     return ret
 
-def res2str(result):
+def res2str(result, comment):
     if result == 'OK':
-        #return '<span style="color:#3a3">✔</span>'
-        return '<span style="color:#3a3">✘</span>'
-        #return '<span style="color:#3a3">☒</span>'
+        #color, ch = '#3a3', '✔'
+        color, ch = '#3a3', '✘'
+        #color, ch = '#3a3', '☒'
     else:
-        #return '<span style="color:red">✗</span>'
-        #return '<span style="color:#f33">×</span>'
-        #return '<span style="color:#f33">☐</span>'
-        return '<span style="color:#f33">∅</span>'
+        color, ch = '#f33', '∅'
+        #color, ch = '#f33', '✗'
+        #color, ch = '#f33', '×'
+        #color, ch = '#f33', '☐'
+    return '<span title="%s" style="color:%s">%s</span>' % (comment, color, ch)
 
 print(header)
 
@@ -174,7 +219,10 @@ for g in reversed(sorted(gr2str_lut.keys())):
         s += '  <td>'
         for name, route, color, grade, result, comm in perfs[d]:
             if grade == g:
-                s += res2str(result)
+                comm = ': %s' % comm if comm else ''
+                if ENGLISH and color in color_lut:
+                    color = color_lut[color]
+                s += res2str(result, '%d %s%s' % (route, color, comm))
                 if result == 'OK':
                     total += 1
                 weight += 1
@@ -190,7 +238,7 @@ for g in reversed(sorted(gr2str_lut.keys())):
         if perfs[d]:
             total, weight = total * DECAY, weight * DECAY
         s += '</td>\n'
-    print('  <td style="background-color:black;">%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
+    print('  <td class="round" style="background:black;">%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
 print('</table>')
 
 print('<p></p>')
@@ -206,7 +254,7 @@ for d in days:
 for d in days:
     for name, route, color, grade, result, comm in perfs[d]:
         key = (route, color, grade)
-        aggregated[key] += res2str(result)
+        aggregated[key] += res2str(result, d + ': ' + comm if comm else d)
         if comm:
             if comments[key]:
                 comments[key] += ' — '
