@@ -33,7 +33,7 @@ generated/%.en.html: generated/%.html
 	> $@
 
 generated/%.html: $(SRC)
-	cat $^ /dev/null | grep -i '^\(#\|$*\)' | $(CONV) > $@
+	cat $^ /dev/null | $(CONV) --name $* > $@
 
 generated/all.html: $(SRC)
 	cat $^ /dev/null | $(CONV) > $@

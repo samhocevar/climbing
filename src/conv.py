@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import re, sys, math
+import re, sys, math, getopt
 
 # How much previous days count
 DECAY = 0.8
@@ -10,6 +10,14 @@ DECAY = 0.8
 # and how much failure in lower grades counts for higher grades
 OTHER_GRADE_WEIGHT = 0.5
 
+# Parse command line
+NAME = None
+optlist, args = getopt.getopt(sys.argv[1:], '', ['name='])
+for opt, arg in optlist:
+    if opt == '--name':
+        NAME = arg.lower()
+
+# Some HTML data
 header = r"""
 <html>
 <head>
@@ -32,11 +40,6 @@ th {
 </style>
 </head>
 <body>
-<div style="float:right">
-  <a href="jo.html">jo</a> |
-  <a href="jy.html">jy</a> |
-  <a href="s.html">s</a>
-</div>
 """
 
 footer = r"""
@@ -44,6 +47,7 @@ footer = r"""
 </html>
 """
 
+names = {}
 grades = {}
 days = []
 perfs = {}
@@ -58,11 +62,14 @@ for l in sys.stdin.readlines():
     m = re.match(r, l)
     if m:
         name, route, color, grade, result, comm = m.groups(1)
+        names[name] = True
         if grade == '4b':
             grade = '4+'
         if grade == '5c/6a':
             grade = '5c+/6a'
         grades[grade] = True
+        if NAME and name.lower() != NAME:
+            continue
         perfs[cur_day] += [(name, int(route), color, grade, result, comm)]
         continue
 
@@ -76,8 +83,6 @@ for l in sys.stdin.readlines():
         if cur_day not in perfs:
             perfs[cur_day] = []
         continue
-
-    print('ignored:', l)
 
 def hist2str(history):
     #ch = '•'
@@ -152,17 +157,21 @@ def res2str(result):
 
 print(header)
 
+print('<div style="float:right">')
+print(' |\n'.join('  <a href="%s.html">%s</a>' % (x.lower(), x) for x in sorted(names.keys())))
+print('</div>')
+
 print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')
 for d in days:
     print('<th>%s</th>' % (d if perfs[d] else ''))
 print('</tr>')
 
 for g in reversed(sorted(gr2str_lut.keys())):
-    print('<tr>' + gr2str(g))
+    print('<tr>\n  ' + gr2str(g))
     history, total, weight, ratio, prev_ratio = [], 0, 0, 0, 0
     s = ''
     for d in days:
-        s += '<td>'
+        s += '  <td>'
         for name, route, color, grade, result, comm in perfs[d]:
             if grade == g:
                 s += res2str(result)
@@ -180,8 +189,8 @@ for g in reversed(sorted(gr2str_lut.keys())):
         history += [ratio]
         if perfs[d]:
             total, weight = total * DECAY, weight * DECAY
-        s += '</td>'
-    print('<td style="background-color:black;">%s</td><td>%s</td>%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
+        s += '</td>\n'
+    print('  <td style="background-color:black;">%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
 print('</table>')
 
 print('<p></p>')
@@ -207,7 +216,7 @@ for g in reversed(sorted(grades)):
         route, color, grade = key
         if grade != g:
             continue
-        print('<tr>' + loc2str(route, color) + gr2str(g) + '<td>' + val + '</td><td>' + comments[key] + '</td></tr>')
+        print('<tr>\n  ' + loc2str(route, color) + '\n  ' + gr2str(g) + '\n  <td>' + val + '</td>\n  <td>' + comments[key] + '</td>\n</tr>')
 
 print('</table>')
 
