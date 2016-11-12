@@ -22,22 +22,78 @@ for opt, arg in optlist:
     if opt == '--english':
         ENGLISH = True
 
+color_lut = {
+    'beige'    : 'beige',
+    'blanche'  : 'white',
+    'bleue'    : 'blue',
+    'jaune'    : 'yellow',
+    'noire'    : 'black',
+    'orange'   : 'orange',
+    'rose'     : 'pink',
+    'rouge'    : 'red',
+    'saumon'   : 'salmon',
+    'verte'    : 'green',
+    'violette' : 'purple',
+}
+
+month_lut = {
+    'janvier'   : 1,
+    'février'   : 2,
+    'mars'      : 3,
+    'avril'     : 4,
+    'mai'       : 5,
+    'juin'      : 6,
+    'juillet'   : 7,
+    'août'      : 8,
+    'septembre' : 9,
+    'octobre'   : 10,
+    'novembre'  : 11,
+    'décembre'  : 12,
+}
+
+gr2str_lut = {
+    '4':      '#5189f1',
+    '4+':     '#3169e1',
+    '5a':     '#a0eea0',
+    '5a+':    '#80de80',
+    '5b':     '#60ce60',
+    '5b+':    '#40be40',
+    '5b+/c':  '#30b630',
+    '5c':     '#20ae20',
+    '5c+':    '#009e00',
+    '5c+/6a': '#008e00',
+    '6a':     '#eeeea0',
+    '6a+':    '#dede80',
+    '6b':     '#cece60',
+    '6b+':    '#bebe40',
+#    '6c':     '#aeae20',
+#    '6c+':    '#9e9e00', # LOL
+}
+
 # Some HTML data
 header = r"""
 <html>
 <head>
 <style>
 body {
-    background: #fff;
+    background: #222;
+    color: #eee;
     font-family: sans-serif;
-}
-
-table {
     margin: 30px 80px;
 }
 
-tr:nth-child(even) { background: #e8f4ff; }
-tr:nth-child(odd) { background: #f8fcff; }
+table {
+    margin: 30px 0px;
+}
+
+a {
+    color: #99d;
+}
+
+//tr:nth-child(even) { background: #e8f4ff; }
+//tr:nth-child(odd) { background: #f8fcff; }
+tr:nth-child(even) { background: #28343f; }
+tr:nth-child(odd) { background: #383c3f; }
 
 td {
     font-size: 0.9em;
@@ -51,7 +107,7 @@ th {
 
 table {
     border-collapse: separate;
-    border-spacing: 2px 3px;
+    border-spacing: 2px 2px;
     min-width: 350px;
 }
 
@@ -95,30 +151,17 @@ for l in sys.stdin.readlines():
         perfs[cur_day] += [(name, int(route), color, grade, result, comm)]
         continue
 
-    r = r'^###\s*([a-z0-9]* \w\w\w)\w*:*\s*(.*)'
+    r = r'^###\s*(\d*) (\w*):*\s*(.*)'
     m = re.match(r, l)
     if m:
-        date, _ = m.groups(1)
+        day, month, _ = m.groups(1)
+        date = '%02d/%02d' % (int(day), month_lut[month])
         cur_day = date
         if date not in days:
             days += [date]
         if cur_day not in perfs:
             perfs[cur_day] = []
         continue
-
-color_lut = {
-    'beige'    : 'beige',
-    'blanche'  : 'white',
-    'bleue'    : 'blue',
-    'jaune'    : 'yellow',
-    'noire'    : 'black',
-    'orange'   : 'orange',
-    'rose'     : 'pink',
-    'rouge'    : 'red',
-    'saumon'   : 'salmon',
-    'verte'    : 'green',
-    'violette' : 'purple',
-}
 
 def hist2str(history):
     #ch = '•'
@@ -141,28 +184,9 @@ def hist2str(history):
     ret += '</span></span>'
     return ret
 
-gr2str_lut = {
-    '4':      '#5189f1',
-    '4+':     '#3169e1',
-    '5a':     '#a0eea0',
-    '5a+':    '#80de80',
-    '5b':     '#60ce60',
-    '5b+':    '#40be40',
-    '5b+/c':  '#30b630',
-    '5c':     '#20ae20',
-    '5c+':    '#009e00',
-    '5c+/6a': '#008e00',
-    '6a':     '#eeeea0',
-    '6a+':    '#dede80',
-    '6b':     '#cece60',
-    '6b+':    '#bebe40',
-#    '6c':     '#aeae20',
-#    '6c+':    '#9e9e00', # LOL
-}
-
 def gr2str(grade):
     c = gr2str_lut[grade] if grade in gr2str_lut else 'white'
-    return '<td class="round" style="background:' + c + '">' + grade + '</td>'
+    return '<td class="round" style="color:#222;background:' + c + '">' + grade + '</td>'
 
 def loc2str(route, color):
     lut = { 'beige':    ['#d97', '#000'],
@@ -183,22 +207,18 @@ def loc2str(route, color):
     return '<td class="round" style="background:%s;color:%s">%d&nbsp;%s</td>' % (style[0], style[1], route, color)
 
 def ratio2str(ratio, prev_ratio):
-    ret = '%.0f%% ' % (ratio * 100)
+    ret = '%.0f%% ' % round(ratio * 100)
     delta = int((ratio - prev_ratio) * 100)
     ret += '(=)' if delta == 0 else '(%+d)' % delta
     return ret
 
 def res2str(result, comment):
+    # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖
     if result == 'OK':
-        #color, ch = '#3a3', '✔'
-        color, ch = '#3a3', '✘'
-        #color, ch = '#3a3', '☒'
+        color, ch = '#6d7', '✔'
     else:
-        color, ch = '#f33', '∅'
-        #color, ch = '#f33', '✗'
-        #color, ch = '#f33', '×'
-        #color, ch = '#f33', '☐'
-    return '<span title="%s" style="color:%s">%s</span>' % (comment, color, ch)
+        color, ch = '#f66', '✕'
+    return '<span title="%s" style="color:%s;font-size:1.0em;font-weight:bold">%s</span>' % (comment, color, ch)
 
 print(header)
 
@@ -238,7 +258,7 @@ for g in reversed(sorted(gr2str_lut.keys())):
         if perfs[d]:
             total, weight = total * DECAY, weight * DECAY
         s += '</td>\n'
-    print('  <td class="round" style="background:black;">%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
+    print('  <td>%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
 print('</table>')
 
 print('<p></p>')
