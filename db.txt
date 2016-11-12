@@ -153,19 +153,19 @@ S  84 violette 6a+ --   10% (lol)
 
 ### 2 novembre
 
-S  62 jaune    5c+/6a OK
 Jo 61 bleue    5a+    OK
+S  62 jaune    5c+/6a OK
+Jo 63 verte    5b     OK
 S  65 blanche  5c+    --   même pas foutu de pécho la 3e prise
 S  65 jaune    6a+    --   30%
-Jo 63 verte    5b     OK
 S  34 violette 5c+    OK
-S  34 verte    6a     OK
 Jo 35 noire    5b     OK
-S  31 saumon   5c     OK
+S  34 verte    6a     OK
 Jo 30 bleue    5a     --  à retenter !
-S  49 blanche  5c     OK
-Jo 49 verte    5a     OK  à refaire en moins laborieux
+S  31 saumon   5c     OK
 
+Jo 49 verte    5a     OK  à refaire en moins laborieux
+S  49 blanche  5c     OK
 S  46 noire    5c     OK
 Jo 44 rouge    5a+    --  30% (passage difficile à réessayer)
 S  44 rouge    5a+    OK
@@ -207,15 +207,15 @@ Jo 72 jaune   5a    --  50%
 
 ### 12 novembre
 
-S 44 bleue 5b+ OK
-S 50 bleue 6a OK
-S 34 verte 6a OK
-S 20 verte 5b OK
-S 71 blanche 5c/6a OK
-S 70 orange 5c OK
-S 62 jaune 5c+/6a OK
-S 65 blanche 5c+ OK
-
-S  24 orange   5c+/6a OK
-S  84 violette 6a+    --   40%
+S 44 bleue    5b+    OK
+S 50 bleue    6a     OK
+S 34 verte    6a     OK
+S 20 verte    5b     OK
+S 72 blanche  5c/6a  OK
+S 70 orange   5c     OK
+S 62 jaune    5c+/6a OK
+S 65 blanche  5c+    OK
+S 66 rouge    5a     ET
+S 24 orange   5c+/6a OK
+S 84 violette 6a+    --  40%
 

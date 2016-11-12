@@ -151,6 +151,9 @@ for l in sys.stdin.readlines():
         grades[grade] = True
         if NAME and name.lower() != NAME:
             continue
+        # Not supported yet
+        if result == 'ET':
+            continue
         perfs[cur_day] += [(name, int(route), color, grade, result, comm)]
         continue
 
