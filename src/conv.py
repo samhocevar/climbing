@@ -10,6 +10,9 @@ DECAY = 0.8
 # and how much failure in lower grades counts for higher grades
 OTHER_GRADE_WEIGHT = 0.5
 
+# How much a >=50% failed route counts
+HALF_ROUTE_WEIGHT = 0.3
+
 # Should we translate color names to English?
 ENGLISH = False
 
@@ -212,10 +215,12 @@ def ratio2str(ratio, prev_ratio):
     ret += '(=)' if delta == 0 else '(%+d)' % delta
     return ret
 
-def res2str(result, comment):
+def res2str(result, percent, comment):
     # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖
     if result == 'OK':
         color, ch = '#6d7', '✔'
+    elif percent >= 50:
+        color, ch = '#ec6', '✕'
     else:
         color, ch = '#f66', '✕'
     return '<span title="%s" style="color:%s;font-size:1.0em;font-weight:bold">%s</span>' % (comment, color, ch)
@@ -239,12 +244,15 @@ for g in reversed(sorted(gr2str_lut.keys())):
         s += '  <td>'
         for name, route, color, grade, result, comm in perfs[d]:
             if grade == g:
+                percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
                 comm = ': %s' % comm if comm else ''
                 if ENGLISH and color in color_lut:
                     color = color_lut[color]
-                s += res2str(result, '%d %s%s' % (route, color, comm))
+                s += res2str(result, percent, '%d %s%s' % (route, color, comm))
                 if result == 'OK':
                     total += 1
+                elif percent >= 50:
+                    total += HALF_ROUTE_WEIGHT
                 weight += 1
             elif grade > g and result == 'OK':
                 total += OTHER_GRADE_WEIGHT
@@ -274,7 +282,8 @@ for d in days:
 for d in days:
     for name, route, color, grade, result, comm in perfs[d]:
         key = (route, color, grade)
-        aggregated[key] += res2str(result, d + ': ' + comm if comm else d)
+        percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
+        aggregated[key] += res2str(result, percent, d + ': ' + comm if comm else d)
         if comm:
             if comments[key]:
                 comments[key] += ' — '
