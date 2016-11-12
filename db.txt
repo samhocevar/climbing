@@ -205,3 +205,17 @@ Jy 73 noire   5b    OK
 S  72 blanche 5c/6a --
 Jo 72 jaune   5a    --  50%
 
+### 12 novembre
+
+S 44 bleue 5b+ OK
+S 50 bleue 6a OK
+S 34 verte 6a OK
+S 20 verte 5b OK
+S 71 blanche 5c/6a OK
+S 70 orange 5c OK
+S 62 jaune 5c+/6a OK
+S 65 blanche 5c+ OK
+
+S  24 orange   5c+/6a OK
+S  84 violette 6a+    --   40%
+
