@@ -219,3 +219,16 @@ S 66 rouge    5a     ET
 S 24 orange   5c+/6a OK
 S 84 violette 6a+    --  40%
 
+### 13 novembre
+
+S 72 blanche  5c/6a OK
+S 70 orange   5c    OK
+S 59 noire    5c    OK
+S 67 orange   6b    --  30%
+S 80 beige    5c    OK
+S  3 jaune    6a    --  30% pas de cotation?
+S 85 jaune    6a+   OK
+S 84 violette 6a+   --  40%
+S 37 rose     6a+   --  40%
+S 46 blanche  6a+   --  30%
+
