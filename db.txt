@@ -58,7 +58,7 @@ Jy 24 orange   5c+/6a --   50%
 Jo 30 bleue    5a     --   60%
 S  23 bleue    5c     --   50%
 Jy 23 bleue    5c     --   50%
-Jo 25 jaune    5a     --   80% (pas réussi les deux dernières prises)
+Jo 26 jaune    5a     --   80% (pas réussi les deux dernières prises)
 S  24 orange   5c+/6a --   50%
 Jy 24 orange   5c+/6a --   50%
 Jo 38 blanche  5a     --   80% (pas réussi les quelques dernières prises)

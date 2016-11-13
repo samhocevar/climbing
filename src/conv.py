@@ -232,7 +232,7 @@ def res2str(result, percent, comment):
 print(header)
 
 print('<div style="float:right">')
-print(' |\n'.join('  <a href="%s.html">%s</a>' % (x.lower(), x) for x in sorted(names.keys())))
+print(' |\n'.join('  <a href="%s.html">%s</a>' % (x.lower(), x) for x in sorted(names.keys()) + ['All']))
 print('</div>')
 
 print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')
@@ -250,9 +250,10 @@ for g in reversed(sorted(gr2str_lut.keys())):
             if grade == g:
                 percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
                 comm = ': %s' % comm if comm else ''
+                name = '[%s] ' % name if not NAME else ''
                 if ENGLISH and color in color_lut:
                     color = color_lut[color]
-                s += res2str(result, percent, '%d %s%s' % (route, color, comm))
+                s += res2str(result, percent, '%s%d %s%s' % (name, route, color, comm))
                 if result == 'OK':
                     total += 1
                 elif percent >= 50:
@@ -275,29 +276,51 @@ print('</table>')
 
 print('<p></p>')
 
-print('<table><tr><th>Route</th><th>Grade</th><th>History</th><th>Notes</th>')
+
+print('<table><tr><th>Route</th><th>Grade</th>')
+
+wanted_names = []
+for name in sorted(names.keys()):
+    if not NAME or name.lower() == NAME:
+        wanted_names += [name]
+#wanted_names = [NAME] if NAME else sorted(names.keys())
+for name in wanted_names:
+    print('<th>' + name + '</th>')
+if NAME:
+    print('<th>Notes</th>')
+
 aggregated = {}
 comments = {}
 for d in days:
     for name, route, color, grade, result, comm in perfs[d]:
         key = (route, color, grade)
-        aggregated[key] = ''
-        comments[key] = ''
+        aggregated[key] = {}
+        comments[key] = {}
+        for name in wanted_names:
+            aggregated[key][name] = ''
+            comments[key][name] = ''
 for d in days:
     for name, route, color, grade, result, comm in perfs[d]:
+        if name not in wanted_names:
+            continue
         key = (route, color, grade)
         percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
-        aggregated[key] += res2str(result, percent, d + ': ' + comm if comm else d)
+        aggregated[key][name] += res2str(result, percent, d + ': ' + comm if comm else d)
         if comm:
-            if comments[key]:
-                comments[key] += ' — '
-            comments[key] += d + ': ' + comm
+            if comments[key][name]:
+                comments[key][name] += ' — '
+            comments[key][name] += d + ': ' + comm
 for g in reversed(sorted(grades)):
     for key, val in sorted(aggregated.items()):
         route, color, grade = key
         if grade != g:
             continue
-        print('<tr>\n  ' + loc2str(route, color) + '\n  ' + gr2str(g) + '\n  <td>' + val + '</td>\n  <td>' + comments[key] + '</td>\n</tr>')
+        print('<tr>\n  ' + loc2str(route, color) + '\n  ' + gr2str(g))
+        for name in wanted_names:
+            print('  <td>' + val[name] + '</td>')
+            if NAME:
+                print('  <td>' + comments[key][name] + '</td>')
+        print('</tr>')
 
 print('</table>')
 
