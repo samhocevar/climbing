@@ -10,11 +10,11 @@ S  85 verte    5b     OK
 S  84 violette 6a+    --   30%
 S  84 beige    5b+    --   30%
 S  85 rouge    5a     OK   facile
-S  27 verte    4+     OK   facile
-S  25 bleue    5b     OK   facile
+S  28 verte    4+     OK   facile
+S  26 bleue    5b     OK   facile
 S 113 noire    5b+    OK
 S  70 bleue    5b     OK   première fois que j’y arrive
-S  70 orange   5c     --   trop crevé
+S  71 orange   5c     --   trop crevé
 
 ### 5 octobre
 
@@ -28,7 +28,7 @@ S 49 jaune  5b+/c OK
 S 49 verte  5b    OK   facile
 S 81 jaune  5b+   OK   utilisé l’arête par erreur
 S 81 jaune  5b+   OK
-S 37 rose   6a+   --   30%
+S 38 rose   6a+   --   30%
 S 37 verte  5c+   --   60%
 
 ### 12 octobre
@@ -47,8 +47,8 @@ S  82 orange   6a     --   30%
 S  84 violette 6a+    --   30%
 Jy 84 violette 6a+    --   bloqué dès la 2e prise
 Jy 82 verte    5c     --   30%
-Jo 36 noire    5a     OK
-Jy 36 noire    5a     OK
+Jo 37 noire    5a     OK
+Jy 37 noire    5a     OK
 S  36 jaune    5c     OK
 
 Jy 24 verte    5a     OK
@@ -79,13 +79,13 @@ Jy 65  violette 5a     OK
 S  24  orange   5c+/6a --   50% (une prise de plus que la dernière fois)
 Jo 24  verte    5a     OK
 Jy 24  orange   5c+/6a --   50% (une prise de plus que sam)
-S  25  bleue    5b     OK
-Jo 25  bleue    5b     --   30%
-Jy 25  bleue    5b     OK
+S  26  bleue    5b     OK
+Jo 26  bleue    5b     --   30%
+Jy 26  bleue    5b     OK
 S  82  orange   6a     OK   première fois
 Jy 82  orange   6a     --   30%
 Jo 82  verte    5c     --   30%
-Jo 81  bleue    5a     OK
+Jo 82  bleue    5a     OK
 S  82  verte    5c     OK
 Jy 82  verte    5c     OK
 
@@ -120,8 +120,8 @@ Jy 62 jaune    5c+/6a --   30%
 S  34 violette 5c+    OK
 Jy 34 violette 5c+    --   30%
 S  36 jaune    5c     --   70%
-Jy 44 bleue    5b+    --   50%
-S  44 bleue    5b+    OK
+Jy 44 bleue    5b/+   --   50%
+S  44 bleue    5b/+   OK
 Jy 85 verte    5b     --   80%
 S  85 verte    5b     OK
 S  84 bleue    5b     OK
@@ -196,23 +196,23 @@ Jy 83 rouge   5c+   --  80%
 
 Jo 49 verte   5a    OK
 S  50 bleue   6a    OK
-Jy 44 bleue   5b+   --  60%
+Jy 44 bleue   5b/+  --  60%
 Jo 78 noire   5b    OK
 S  50 bleue   6a    OK
 Jy 78 noire   5b    OK
 Jo 73 noire   5b    --  30%
 Jy 73 noire   5b    OK
-S  72 blanche 5c/6a --
+S  73 blanche 5c/6a --
 Jo 72 jaune   5a    --  50%
 
 ### 12 novembre
 
-S 44 bleue    5b+    OK
+S 44 bleue    5b/+   OK
 S 50 bleue    6a     OK
 S 34 verte    6a     OK
 S 20 verte    5b     OK
-S 72 blanche  5c/6a  OK
-S 70 orange   5c     OK
+S 73 blanche  5c/6a  OK
+S 71 orange   5c     OK
 S 62 jaune    5c+/6a OK
 S 65 blanche  5c+    OK
 S 66 rouge    5a     ET
@@ -221,14 +221,14 @@ S 84 violette 6a+    --  40%
 
 ### 13 novembre
 
-S 72 blanche  5c/6a OK
-S 70 orange   5c    OK
+S 73 blanche  5c/6a OK
+S 71 orange   5c    OK
 S 59 noire    5c    OK
 S 67 orange   6b    --  30%
 S 80 beige    5c    OK
 S  3 jaune    6a    --  30% pas de cotation?
 S 85 jaune    6a+   OK
 S 84 violette 6a+   --  40%
-S 37 rose     6a+   --  40%
+S 38 rose     6a+   --  40%
 S 46 blanche  6a+   --  30%
 
