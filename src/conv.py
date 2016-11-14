@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re, sys, math, getopt
+import tools
 
 # How much previous days count
 DECAY = 0.8
@@ -52,25 +53,6 @@ month_lut = {
     'octobre'   : 10,
     'novembre'  : 11,
     'décembre'  : 12,
-}
-
-gr2str_lut = {
-    '4':      '#5189f1',
-    '4+':     '#3169e1',
-    '5a':     '#a0eea0',
-    '5a+':    '#80de80',
-    '5b':     '#60ce60',
-    '5b+':    '#40be40',
-    '5b+/c':  '#30b630',
-    '5c':     '#20ae20',
-    '5c+':    '#009e00',
-    '5c+/6a': '#008e00',
-    '6a':     '#eeeea0',
-    '6a+':    '#dede80',
-    '6b':     '#cece60',
-    '6b+':    '#bebe40',
-#    '6c':     '#aeae20',
-#    '6c+':    '#9e9e00', # LOL
 }
 
 # Some HTML data
@@ -144,10 +126,6 @@ for l in sys.stdin.readlines():
     if m:
         name, route, color, grade, result, comm = m.groups(1)
         names[name] = True
-        if grade == '4b':
-            grade = '4+'
-        if grade == '5c/6a':
-            grade = '5c+/6a'
         grades[grade] = True
         if NAME and name.lower() != NAME:
             continue
@@ -191,10 +169,6 @@ def hist2str(history):
     ret += '</span></span>'
     return ret
 
-def gr2str(grade):
-    c = gr2str_lut[grade] if grade in gr2str_lut else 'white'
-    return '<td class="round" style="color:#222;background:' + c + '">' + grade + '</td>'
-
 def loc2str(route, color):
     lut = { 'beige':    ['#d97', '#000'],
             'blanche':  ['#fff', '#000'],
@@ -219,7 +193,7 @@ def ratio2str(ratio, prev_ratio):
     ret += '(=)' if delta == 0 else '(%+d)' % delta
     return ret
 
-def res2str(result, percent, comment):
+def res2str(result, percent, comment, important):
     # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖
     if result == 'OK':
         color, ch = '#6d7', '✔'
@@ -227,7 +201,9 @@ def res2str(result, percent, comment):
         color, ch = '#ec6', '✕'
     else:
         color, ch = '#f66', '✕'
-    return '<span title="%s" style="color:%s;font-size:1.0em;font-weight:bold">%s</span>' % (comment, color, ch)
+    deco = ';text-shadow:0px 0px 2px #fff' if important else ''
+    #deco += ';text-decoration:underline' if important else ''
+    return '<span title="%s" style="color:%s;font-size:1.0em;font-weight:bold%s">%s</span>' % (comment, color, deco, ch)
 
 print(header)
 
@@ -240,29 +216,37 @@ for d in days:
     print('<th>%s</th>' % (d if perfs[d] else ''))
 print('</tr>')
 
-for g in reversed(sorted(gr2str_lut.keys())):
-    print('<tr>\n  ' + gr2str(g))
+for gn in reversed(tools.all_grades('4', '6b+')):
+    # Only print lines for integer scores
+    if gn != int(gn):
+        continue
+    g = tools.num_to_grade(gn)
+    print('<tr>\n  ' + tools.grade_to_str(g))
     history, total, weight, ratio, prev_ratio = [], 0, 0, 0, 0
     s = ''
     for d in days:
         s += '  <td>'
         for name, route, color, grade, result, comm in perfs[d]:
-            if grade == g:
+            graden = tools.grade_to_num(grade)
+            if abs(graden - gn) < 1:
                 percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
                 comm = ': %s' % comm if comm else ''
                 name = '[%s] ' % name if not NAME else ''
                 if ENGLISH and color in color_lut:
                     color = color_lut[color]
-                s += res2str(result, percent, '%s%d %s%s' % (name, route, color, comm))
+                if graden >= gn:
+                    important = graden > gn
+                    s += res2str(result, percent, '%s%d %s (%s)%s' % (name, route, color, grade, comm), important)
+                k = 1 - abs(graden - gn)
                 if result == 'OK':
-                    total += 1
+                    total += k
                 elif percent >= 50:
-                    total += HALF_ROUTE_WEIGHT
-                weight += 1
-            elif grade > g and result == 'OK':
+                    total += k * HALF_ROUTE_WEIGHT
+                weight += k
+            elif graden > gn and result == 'OK':
                 total += OTHER_GRADE_WEIGHT
                 weight += OTHER_GRADE_WEIGHT
-            elif grade < g and result != 'OK':
+            elif graden < gn and result != 'OK':
                 weight += OTHER_GRADE_WEIGHT
         if perfs[d]:
             prev_ratio = ratio
@@ -305,17 +289,17 @@ for d in days:
             continue
         key = (route, color, grade)
         percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
-        aggregated[key][name] += res2str(result, percent, d + ': ' + comm if comm else d)
+        aggregated[key][name] += res2str(result, percent, d + ': ' + comm if comm else d, False)
         if comm:
             if comments[key][name]:
                 comments[key][name] += ' — '
             comments[key][name] += d + ': ' + comm
-for g in reversed(sorted(grades)):
+for gn in reversed(tools.all_grades('3', '6c+')):
     for key, val in sorted(aggregated.items()):
         route, color, grade = key
-        if grade != g:
+        if tools.grade_to_num(grade) != gn:
             continue
-        print('<tr>\n  ' + loc2str(route, color) + '\n  ' + gr2str(g))
+        print('<tr>\n  ' + loc2str(route, color) + '\n  ' + tools.grade_to_str(grade))
         for name in wanted_names:
             print('  <td>' + val[name] + '</td>')
             if NAME:
