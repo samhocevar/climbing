@@ -37,7 +37,7 @@ def grade_to_num(grade):
     return gr2str_lut[grade][0] if grade in gr2str_lut else 0
 
 def num_to_grade(num):
-    for key in gr2str_lut:
+    for key in sorted(gr2str_lut):
         if gr2str_lut[key][0] == num:
             return key
     return 'unknown'

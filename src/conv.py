@@ -212,8 +212,10 @@ print(' |\n'.join('  <a href="%s.html">%s</a>' % (x.lower(), x) for x in sorted(
 print('</div>')
 
 print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')
+volume = {}
 for d in days:
     print('<th>%s</th>' % (d if perfs[d] else ''))
+    volume[d] = [0, 0]
 print('</tr>')
 
 for gn in reversed(tools.all_grades('4', '6b+')):
@@ -240,9 +242,12 @@ for gn in reversed(tools.all_grades('4', '6b+')):
                 k = 1 - abs(graden - gn)
                 if result == 'OK':
                     total += k
+                    volume[d][0] += k
                 elif percent >= 50:
                     total += k * HALF_ROUTE_WEIGHT
+                    volume[d][0] += k * 0.5
                 weight += k
+                volume[d][1] += k
             elif graden > gn and result == 'OK':
                 total += OTHER_GRADE_WEIGHT
                 weight += OTHER_GRADE_WEIGHT
@@ -256,6 +261,12 @@ for gn in reversed(tools.all_grades('4', '6b+')):
             total, weight = total * DECAY, weight * DECAY
         s += '</td>\n'
     print('  <td>%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
+
+print('<tr><td style="background:#222" colspan="2"></td><th>Vol</th>')
+for d in days:
+    print('<td>%d/%d</td>' % tuple(volume[d]) if perfs[d] else '<td></td>')
+print('</tr>')
+
 print('</table>')
 
 print('<p></p>')
