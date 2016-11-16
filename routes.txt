@@ -137,7 +137,7 @@
 84 violette 6a+
 85 jaune 6a+
 85 rouge 5a
-85 verte 5b
+85 verte 5b # « la » verte
 
 95 blanche 6c+/7a
 96 bleue 5b
@@ -160,5 +160,6 @@
 101 saumon 7a+/b
 102 jaune 6b
 102 verte 6c+/7a
+
 pilier_gris jaune 4+
 pilier_gris verte 5b
