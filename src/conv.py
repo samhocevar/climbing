@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re, sys, math, getopt
-import tools
+import tools, db
 
 # How much previous days count
 DECAY = 0.8
@@ -38,21 +38,6 @@ color_lut = {
     'saumon'   : 'salmon',
     'verte'    : 'green',
     'violette' : 'purple',
-}
-
-month_lut = {
-    'janvier'   : 1,
-    'février'   : 2,
-    'mars'      : 3,
-    'avril'     : 4,
-    'mai'       : 5,
-    'juin'      : 6,
-    'juillet'   : 7,
-    'août'      : 8,
-    'septembre' : 9,
-    'octobre'   : 10,
-    'novembre'  : 11,
-    'décembre'  : 12,
 }
 
 # Some HTML data
@@ -109,43 +94,6 @@ footer = r"""
 </body>
 </html>
 """
-
-names = {}
-grades = {}
-days = []
-perfs = {}
-cur_day = None
-
-for l in sys.stdin.readlines():
-    l = l.strip()
-    if not l:
-        continue
-
-    r = r'\s*(\w*)\s*(\d*)\s*(\w*)\s*([+/0-9a-z]*)\s*(OK|--)\s*(.*)'
-    m = re.match(r, l)
-    if m:
-        name, route, color, grade, result, comm = m.groups(1)
-        names[name] = True
-        grades[grade] = True
-        if NAME and name.lower() != NAME:
-            continue
-        # Not supported yet
-        if result == 'ET':
-            continue
-        perfs[cur_day] += [(name, int(route), color, grade, result, comm)]
-        continue
-
-    r = r'^###\s*(\d*) (\w*):*\s*(.*)'
-    m = re.match(r, l)
-    if m:
-        day, month, _ = m.groups(1)
-        date = '%02d/%02d' % (int(day), month_lut[month])
-        cur_day = date
-        if date not in days:
-            days += [date]
-        if cur_day not in perfs:
-            perfs[cur_day] = []
-        continue
 
 def hist2str(history):
     ch = '•'
@@ -205,16 +153,18 @@ def res2str(result, percent, comment, important):
     #deco += ';text-decoration:underline' if important else ''
     return '<span title="%s" style="color:%s;font-size:1.0em;font-weight:bold%s">%s</span>' % (comment, color, deco, ch)
 
+db = db.Database()
+
 print(header)
 
 print('<div style="float:right">')
-print(' |\n'.join('  <a href="%s.html">%s</a>' % (x.lower(), x) for x in sorted(names.keys()) + ['All']))
+print(' |\n'.join('  <a href="%s.html">%s</a>' % (x.lower(), x) for x in db.all_names() + ['All']))
 print('</div>')
 
 print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')
 volume = {}
-for d in days:
-    print('<th>%s</th>' % (d if perfs[d] else ''))
+for d in db.all_days():
+    print('<th>%s</th>' % (d if db.all_perfs(d, NAME) else ''))
     volume[d] = [0, 0]
 print('</tr>')
 
@@ -226,9 +176,9 @@ for gn in reversed(tools.all_grades('4', '6b+')):
     print('<tr>\n  ' + tools.grade_to_str(g))
     history, total, weight, ratio, prev_ratio = [], 0, 0, 0, 0
     s = ''
-    for d in days:
+    for d in db.all_days():
         s += '  <td>'
-        for name, route, color, grade, result, comm in perfs[d]:
+        for name, route, color, grade, result, comm in db.all_perfs(d, NAME):
             graden = tools.grade_to_num(grade)
             if abs(graden - gn) < 1:
                 percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
@@ -253,11 +203,11 @@ for gn in reversed(tools.all_grades('4', '6b+')):
                 weight += OTHER_GRADE_WEIGHT
             elif graden < gn and result != 'OK':
                 weight += OTHER_GRADE_WEIGHT
-        if perfs[d]:
+        if db.all_perfs(d, NAME):
             prev_ratio = ratio
         ratio = total / (weight + 1e-8)
         history += [ratio]
-        if perfs[d]:
+        if db.all_perfs(d, NAME):
             total, weight = total * DECAY, weight * DECAY
         s += '</td>\n'
     print('  <td>%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
@@ -266,23 +216,23 @@ for gn in reversed(tools.all_grades('4', '6b+')):
 # Print best / average route
 #
 best, avg = {}, {}
-for d in days:
+for d in db.all_days():
     best[d] = None
     avg[d] = []
-    for name, route, color, grade, result, comm in perfs[d]:
+    for name, route, color, grade, result, comm in db.all_perfs(d, NAME):
         if result == 'OK':
             if not best[d] or tools.grade_to_num(grade) > tools.grade_to_num(best[d]):
                 best[d] = grade
             avg[d].append(tools.grade_to_num(grade))
 
 print('<tr><td style="background:#222" colspan="2"></td><th>Avg</th>')
-for d in days:
+for d in db.all_days():
     avg_num = sum(avg[d]) / len(avg[d]) if avg[d] else 0
     print(tools.grade_to_str(tools.num_to_grade(avg_num)) if avg_num else '<td></td>')
 print('</tr>')
 
 print('<tr><td style="background:#222" colspan="2"></td><th>Best</th>')
-for d in days:
+for d in db.all_days():
     print(tools.grade_to_str(best[d]) if best[d] else '<td></td>')
 print('</tr>')
 
@@ -290,8 +240,8 @@ print('</tr>')
 # Print daily volume
 #
 print('<tr><td style="background:#222" colspan="2"></td><th>Vol</th>')
-for d in days:
-    print('<td>%d/%d</td>' % tuple(volume[d]) if perfs[d] else '<td></td>')
+for d in db.all_days():
+    print('<td>%d/%d</td>' % tuple(volume[d]) if db.all_perfs(d, NAME) else '<td></td>')
 print('</tr>')
 
 print('</table>')
@@ -302,10 +252,10 @@ print('<p></p>')
 print('<table><tr><th>Route</th><th>Grade</th>')
 
 wanted_names = []
-for name in sorted(names.keys()):
+for name in db.all_names():
     if not NAME or name.lower() == NAME:
         wanted_names += [name]
-#wanted_names = [NAME] if NAME else sorted(names.keys())
+#wanted_names = [NAME] if NAME else db.all_names()
 for name in wanted_names:
     print('<th>' + name + '</th>')
 if NAME:
@@ -313,16 +263,16 @@ if NAME:
 
 aggregated = {}
 comments = {}
-for d in days:
-    for name, route, color, grade, result, comm in perfs[d]:
+for d in db.all_days():
+    for name, route, color, grade, result, comm in db.all_perfs(d, NAME):
         key = (route, color, grade)
         aggregated[key] = {}
         comments[key] = {}
         for name in wanted_names:
             aggregated[key][name] = ''
             comments[key][name] = ''
-for d in days:
-    for name, route, color, grade, result, comm in perfs[d]:
+for d in db.all_days():
+    for name, route, color, grade, result, comm in db.all_perfs(d, NAME):
         if name not in wanted_names:
             continue
         key = (route, color, grade)
