@@ -188,7 +188,7 @@ def loc2str(route, color):
     return '<td class="round" style="background:%s;color:%s">%d&nbsp;%s</td>' % (style[0], style[1], route, color)
 
 def ratio2str(ratio, prev_ratio):
-    ret = '%.0f%% ' % round(ratio * 100)
+    ret = '%.0f%%&nbsp;' % round(ratio * 100)
     delta = int((ratio - prev_ratio) * 100)
     ret += '(=)' if delta == 0 else '(%+d)' % delta
     return ret
