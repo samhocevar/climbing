@@ -262,6 +262,33 @@ for gn in reversed(tools.all_grades('4', '6b+')):
         s += '</td>\n'
     print('  <td>%s</td>\n  <td>%s</td>\n%s</tr>' % (hist2str(history), ratio2str(ratio, prev_ratio), s))
 
+#
+# Print best / average route
+#
+best, avg = {}, {}
+for d in days:
+    best[d] = None
+    avg[d] = []
+    for name, route, color, grade, result, comm in perfs[d]:
+        if result == 'OK':
+            if not best[d] or tools.grade_to_num(grade) > tools.grade_to_num(best[d]):
+                best[d] = grade
+            avg[d].append(tools.grade_to_num(grade))
+
+print('<tr><td style="background:#222" colspan="2"></td><th>Avg</th>')
+for d in days:
+    avg_num = sum(avg[d]) / len(avg[d]) if avg[d] else 0
+    print(tools.grade_to_str(tools.num_to_grade(avg_num)) if avg_num else '<td></td>')
+print('</tr>')
+
+print('<tr><td style="background:#222" colspan="2"></td><th>Best</th>')
+for d in days:
+    print(tools.grade_to_str(best[d]) if best[d] else '<td></td>')
+print('</tr>')
+
+#
+# Print daily volume
+#
 print('<tr><td style="background:#222" colspan="2"></td><th>Vol</th>')
 for d in days:
     print('<td>%d/%d</td>' % tuple(volume[d]) if perfs[d] else '<td></td>')

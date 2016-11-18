@@ -60,10 +60,13 @@ def grade_to_num(grade):
     return gr2str_lut[grade][0] if grade in gr2str_lut else 0
 
 def num_to_grade(num):
+    best, bestnum = None, 0
     for key in sorted(gr2str_lut):
         if gr2str_lut[key][0] == num:
             return key
-    return 'unknown'
+        elif not best or abs(gr2str_lut[key][0] - num) < abs(gr2str_lut[best][0] - num):
+            best = key
+    return best
 
 def all_grades(min = '3', max = '6c+'):
     a1, a2 = grade_to_num(min), grade_to_num(max)
