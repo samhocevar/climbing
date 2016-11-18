@@ -61,13 +61,7 @@ class Database:
         return self.days
 
     def all_perfs(self, day, climber_name=None):
-        return [p for p in self.perfs[day] if not climber_name or p[0].lower() == climber_name]
-
-    def print_links(self):
-        print('<div style="float:right">')
-        print(' |\n'.join('  <a href="%s.html">%s</a>' % (x.lower(), x) for x in self.all_names() + ['All']))
-        print('</div>')
-
+        return [p for p in self.perfs[day] if not climber_name or p[0] == climber_name]
 
     def print_history(self, climber_name):
         print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')

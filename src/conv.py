@@ -5,16 +5,13 @@ import re, sys, getopt
 import config, tools, db
 
 # Parse command line
-config.NAME = None
-optlist, args = getopt.getopt(sys.argv[1:], '', ['name=', 'english'])
+optlist, args = getopt.getopt(sys.argv[1:], '', ['english'])
 for opt, arg in optlist:
-    if opt == '--name':
-        config.NAME = arg.lower()
     if opt == '--english':
         config.ENGLISH = True
 
 # Some HTML data
-print(r"""
+print("""
 <html>
 <head>
 <style>
@@ -30,7 +27,7 @@ table {
 }
 
 a {
-    color: #99d;
+    color: #555;
 }
 
 //tr:nth-child(even) { background: #e8f4ff; }
@@ -54,32 +51,82 @@ table {
     min-width: 350px;
 }
 
+.active-tab {
+    background: #fff;
+}
+
+.tab {
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
 td.round { border-radius: 4px; }
 table tr:last-child td.round:first-child { border-bottom-left-radius: 4px; }
 table tr:last-child td.round:last-child { border-bottom-right-radius: 4px; }
-
 </style>
+
+<script>
+function open_tab(id) {
+    var l = document.getElementsByClassName('history');
+    for (var i = 0; i < l.length; ++i) {
+        l[i].style.display = "none";
+    }
+    l = document.getElementsByClassName('tab');
+    for (var i = 0; i < l.length; ++i) {
+        l[i].style.backgroundColor = "#bbb";
+        l[i].style.color = "#555";
+        //l[i].class = "tab";
+    }
+    document.getElementById(id).style.display = "block";
+    document.getElementById('tab' + id).style.backgroundColor = "#555";
+    document.getElementById('tab' + id).style.color = "#bbb";
+    //document.getElementById('tab' + id).class = "tab active-tab";
+}
+function nav_tab(direction) {
+    var l = document.getElementsByClassName('history');
+    for (var i = 0; i < l.length; ++i) {
+        if (l[i].style.display == "block") {
+            open_tab(l[(i + direction + l.length) % l.length].id);
+            return;
+        }
+    }
+}
+document.onkeyup = function(e) {
+    var e = e || window.event;
+    if (e.which == 37) { // left
+        nav_tab(-1);
+    }
+    else if (e.which == 39) { // right
+        nav_tab(1);
+    }
+}
+</script>
 </head>
 <body>
 """)
 
 db = db.Database()
 
-db.print_links()
+print('<span>')
+for name in db.all_names() + ['All']:
+    print('''<a href="javascript:void(0)" onClick="open_tab('%s')"><span class="tab" id="tab%s">%s</span></a> ''' % (name, name, name))
+print('</span>')
 
-db.print_history(config.NAME)
+for name in db.all_names() + [None]:
+    print('<div class="history" id="%s">' % (name or 'All'))
+    db.print_history(name)
+    print('</div>')
 
-print('<p></p>')
+print('<script>open_tab("%s")</script>' % (db.all_names()[0]))
 
 wanted_names = []
 for name in db.all_names():
-    if not config.NAME or name.lower() == config.NAME:
-        wanted_names += [name]
+    wanted_names += [name]
 db.print_routes(wanted_names)
 
-print(r"""
+print("""
 </body>
 </html>
 """)
-
 
