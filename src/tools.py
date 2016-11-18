@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import math
+import config
+
 gr2str_lut = {
     '3':       (1,   '#f15189'),
     '3+':      (2,   '#e13169'),
@@ -52,6 +55,20 @@ gr2str_lut = {
     '8c+':    (28,   '#9e009e'),
 }
 
+color_lut = {
+    'beige'    : 'beige',
+    'blanche'  : 'white',
+    'bleue'    : 'blue',
+    'jaune'    : 'yellow',
+    'noire'    : 'black',
+    'orange'   : 'orange',
+    'rose'     : 'pink',
+    'rouge'    : 'red',
+    'saumon'   : 'salmon',
+    'verte'    : 'green',
+    'violette' : 'purple',
+}
+
 def grade_to_str(grade):
     c = gr2str_lut[grade][1] if grade in gr2str_lut else 'white'
     return '<td class="round" style="color:#222;background:' + c + '">' + grade + '</td>'
@@ -75,4 +92,62 @@ def all_grades(min = '3', max = '6c+'):
        if gr2str_lut[key][0] >= a1 and gr2str_lut[key][0] <= a2:
            k.append(gr2str_lut[key][0])
     return sorted(set(k))
+
+def res_to_str(result, percent, comment, important):
+    # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖
+    if result == 'OK':
+        color, ch = '#6d7', '✔'
+    elif percent >= 50:
+        color, ch = '#ec6', '✕'
+    else:
+        color, ch = '#f66', '✕'
+    deco = ';text-shadow:0px 0px 2px #fff' if important else ''
+    #deco += ';text-decoration:underline' if important else ''
+    return '<span title="%s" style="color:%s;font-size:1.0em;font-weight:bold%s">%s</span>' % (comment, color, deco, ch)
+
+def route_to_str(route, color):
+    lut = { 'beige':    ['#d97', '#000'],
+            'blanche':  ['#fff', '#000'],
+            'bleue':    ['#68e', '#000'],
+            'jaune':    ['#dd4', '#000'],
+            'noire':    ['#333', '#eee'],
+            'orange':   ['#f82', '#000'],
+            'rose':     ['#f7a', '#000'],
+            'rouge':    ['#e44', '#000'],
+            'saumon':   ['#fa8', '#000'],
+            'verte':    ['#6d6', '#000'],
+            'violette': ['#a5e', '#000'],
+          }
+    style = lut[color] if color in lut else lut['blanche']
+    if config.ENGLISH and color in color_lut:
+        color = color_lut[color]
+    return '<td class="round" style="background:%s;color:%s">%d&nbsp;%s</td>' % (style[0], style[1], route, color)
+
+def ratio_to_str(ratio, prev_ratio):
+    ret = '%.0f%%&nbsp;' % round(ratio * 100)
+    delta = int((ratio - prev_ratio) * 100)
+    ret += '(=)' if delta == 0 else '(%+d)' % delta
+    return ret
+
+def hist_to_str(history):
+    ch = '•'
+    #ch = '-'
+    history = [0] + history
+    ret = '<span style="display:block;height:17px;margin:1px 4px 1px 2px; font-size:0.65em; letter-spacing:-0.22em">'
+    prev_r, n, step = -1, 0, 0.0625 * 1.25
+    while n <= len(history) - 1:
+        t = n - int(n)
+        t = (3.0 - 2.0 * t) * t * t
+        r = history[int(n)] * (1 - t) + history[math.ceil(n)] * t
+        style = ' top:%.2fpx; color:#%x%x3' % (13 - r * 17, int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
+        # Use \n here to avoid super long lines…
+        if int(64 * r) != int(64 * prev_r):
+            if prev_r != -1:
+                ret += '</span>'
+            ret += '<span\nstyle="position:relative;%s">' % (style)
+            prev_r = r
+        ret += ch
+        n += step
+    ret += '</span></span>'
+    return ret
 
