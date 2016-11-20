@@ -261,3 +261,14 @@ S 30 jaune 5c+ -- 90%
 Jo 23 bleue 5c -- 20%
 Jo 23 bleue 5c -- 50%
 
+### 20 novembre
+
+S  73 blanche 5c/6a OK
+S 65 rose 6a/+ -- 40%
+S 62 jaune 5c+/6a OK
+S 60 rose 5c OK  pris un pied rouge par erreur
+S 82 orange 6a OK
+S 49 blanche 5c OK
+S 73 rouge 6a OK
+S  35 rouge   6a    -- 90%  trop crevé pour le dernier mouvement
+

@@ -54,10 +54,10 @@
 46 violette 4+
 48 rose 4
 49 blanche 5c
-49 jaune 5b+/c # disparue
+49 jaune 5b+/c # disparue octobre 2016
 49 orange 5b
 49 verte 5a
-49 verte 5b # disparue
+49 verte 5b # disparue octobre 2016
 49 violette 4
 50 bleue 6a
 50 jaune 4+
