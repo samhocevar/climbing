@@ -1,274 +1,274 @@
 
 ### 29 septembre
 
-S  50 saumon   5c+    --   80% (pas réussi la dernière prise)
-S  50 noire    5a     OK
-S  49 jaune    5b+/c  OK   difficile
-S  49 verte    5b     OK
-S  81 blanche  5c     OK   arrivé en haut mais pas sûr d’avoir fini
-S  85 verte    5b     OK
-S  84 violette 6a+    --   30%
-S  84 beige    5b+    --   30%
-S  85 rouge    5a     OK   facile
-S  28 verte    4+     OK   facile
-S  26 bleue    5b     OK   facile
-S 113 noire    5b+    OK
-S  70 bleue    5b     OK   première fois que j’y arrive
-S  71 orange   5c     --   trop crevé
+Sa 50  saumon   5c+    --   80% (pas réussi la dernière prise)
+Sa 50  noire    5a     OK
+Sa 49  jaune    5b+/c  OK   difficile
+Sa 49  verte    5b     OK
+Sa 81  blanche  5c     OK   arrivé en haut mais pas sûr d’avoir fini
+Sa 85  verte    5b     OK
+Sa 84  violette 6a+    --   30%
+Sa 84  beige    5b+    --   30%
+Sa 85  rouge    5a     OK   facile
+Sa 28  verte    4+     OK   facile
+Sa 26  bleue    5b     OK   facile
+Sa 113 noire    5b+    OK
+Sa 70  bleue    5b     OK   première fois que j’y arrive
+Sa 71  orange   5c     --   trop crevé
 
 ### 5 octobre
 
-S 85 verte  5b    OK
-S 85 jaune  6a+   OK   difficile
-S 36 jaune  5c    OK
-S 35 rouge  6a    --   70%
-S 50 saumon 5c+   OK
-S 50 bleue  6a    --
-S 49 jaune  5b+/c OK
-S 49 verte  5b    OK   facile
-S 81 jaune  5b+   OK   utilisé l’arête par erreur
-S 81 jaune  5b+   OK
-S 38 rose   6a+   --   30%
-S 37 verte  5c+   --   60%
+Sa 85 verte  5b    OK
+Sa 85 jaune  6a+   OK   difficile
+Sa 36 jaune  5c    OK
+Sa 35 rouge  6a    --   70%
+Sa 50 saumon 5c+   OK
+Sa 50 bleue  6a    --
+Sa 49 jaune  5b+/c OK
+Sa 49 verte  5b    OK   facile
+Sa 81 jaune  5b+   OK   utilisé l’arête par erreur
+Sa 81 jaune  5b+   OK
+Sa 38 rose   6a+   --   30%
+Sa 37 verte  5c+   --   60%
 
 ### 12 octobre
 
 Jo 83 noire    4      OK
 Jy 83 noire    4      OK
-S  83 rouge    5c+    OK
+Sa 83 rouge    5c+    OK
 Jo 83 rouge    5c+    --   60%
 Jy 83 rouge    5c+    --   80% (pas réussi la dernière prise)
-S  85 verte    5b     OK
+Sa 85 verte    5b     OK
 Jy 85 verte    5b     OK
 Jo 85 verte    5b     --   60%
-S  82 verte    5c     OK
+Sa 82 verte    5c     OK
 Jo 85 rouge    5a     OK   première fois
-S  82 orange   6a     --   30%
-S  84 violette 6a+    --   30%
+Sa 82 orange   6a     --   30%
+Sa 84 violette 6a+    --   30%
 Jy 84 violette 6a+    --   bloqué dès la 2e prise
 Jy 82 verte    5c     --   30%
 Jo 37 noire    5a     OK
 Jy 37 noire    5a     OK
-S  36 jaune    5c     OK
+Sa 36 jaune    5c     OK
 
 Jy 24 verte    5a     OK
 Jo 24 verte    5a     --   50%
-S  24 orange   5c+/6a --   50%
+Sa 24 orange   5c+/6a --   50%
 Jy 24 orange   5c+/6a --   50%
 Jo 30 bleue    5a     --   60%
-S  23 bleue    5c     --   50%
+Sa 23 bleue    5c     --   50%
 Jy 23 bleue    5c     --   50%
 Jo 26 jaune    5a     --   80% (pas réussi les deux dernières prises)
-S  24 orange   5c+/6a --   50%
+Sa 24 orange   5c+/6a --   50%
 Jy 24 orange   5c+/6a --   50%
 Jo 38 blanche  5a     --   80% (pas réussi les quelques dernières prises)
-S  37 verte    5c+    --   80% (pas réussi la dernière prise)
+Sa 37 verte    5c+    --   80% (pas réussi la dernière prise)
 Jy 37 verte    5c+    --
 Jo 81 noire    4b     --   trop crevé
-S  85 verte    5b     --   trop crevé
+Sa 85 verte    5b     --   trop crevé
 
 ### 19 octobre
 
 Jo 65  bleue    4+     OK
 Jy 65  bleue    4+     OK
-S  65  blanche  5c+    --   20%
-S  65  violette 5a     OK
+Sa 65  blanche  5c+    --   20%
+Sa 65  violette 5a     OK
 Jo 65  violette 5a     OK
 Jy 65  blanche  5c+    --   2e prise
 Jy 65  violette 5a     OK
-S  24  orange   5c+/6a --   50% (une prise de plus que la dernière fois)
+Sa 24  orange   5c+/6a --   50% (une prise de plus que la dernière fois)
 Jo 24  verte    5a     OK
 Jy 24  orange   5c+/6a --   50% (une prise de plus que sam)
-S  26  bleue    5b     OK
+Sa 26  bleue    5b     OK
 Jo 26  bleue    5b     --   30%
 Jy 26  bleue    5b     OK
-S  82  orange   6a     OK   première fois
+Sa 82  orange   6a     OK   première fois
 Jy 82  orange   6a     --   30%
 Jo 82  verte    5c     --   30%
 Jo 82  bleue    5a     OK
-S  82  verte    5c     OK
+Sa 82  verte    5c     OK
 Jy 82  verte    5c     OK
 
-S  112 verte    5b     OK
+Sa 112 verte    5b     OK
 Jo 112 verte    5b     --   40%
 Jy 112 verte    5b     OK
-S  37  verte    5c+    OK
+Sa 37  verte    5c+    OK
 Jy 37  verte    5c+    --   cramé
 Jo 85  rouge    5a     OK
 Jy 85  verte    5b     OK
-S  34  violette 5c+    OK
-S  36  jaune    5c     OK
+Sa 34  violette 5c+    OK
+Sa 36  jaune    5c     OK
 Jo 49  verte    5a     --   60%
 Jo 38  blanche  5a     --
 Jy 38  blanche  5a     --   cramé
-S  85  verte    5b     OK
-S  83  rouge    5c+    --   80% (trop crevé)
+Sa 85  verte    5b     OK
+Sa 83  rouge    5c+    --   80% (trop crevé)
 
 ### 26 octobre
 
-S  89 violette 5b     OK
+Sa 89 violette 5b     OK
 Jy 89 violette 5b     --   80%
-S  85 jaune    6a+    OK
+Sa 85 jaune    6a+    OK
 Jy 85 rouge    5a     OK
-S  24 orange   5c+/6a --   50% (comme d’hab)
+Sa 24 orange   5c+/6a --   50% (comme d’hab)
 Jy 24 orange   5c+/6a --   50% (comme d’hab)
-S  80 beige    5c     OK
+Sa 80 beige    5c     OK
 Jy 80 beige    5c     --   80%
 
-S  62 jaune    5c+/6a OK
+Sa 62 jaune    5c+/6a OK
 Jy 62 jaune    5c+/6a --   30%
-S  34 violette 5c+    OK
+Sa 34 violette 5c+    OK
 Jy 34 violette 5c+    --   30%
-S  36 jaune    5c     --   70%
+Sa 36 jaune    5c     --   70%
 Jy 44 bleue    5b/+   --   50%
-S  44 bleue    5b/+   OK
+Sa 44 bleue    5b/+   OK
 Jy 85 verte    5b     --   80%
-S  85 verte    5b     OK
-S  84 bleue    5b     OK
-S  82 verte    5c     --   70% (crevé)
+Sa 85 verte    5b     OK
+Sa 84 bleue    5b     OK
+Sa 82 verte    5c     --   70% (crevé)
 
 ### 1 novembre
 
-S  42 orange   5c+ OK
+Sa 42 orange   5c+ OK
 Jy 42 bleue    4+  OK
-S  82 verte    5c  OK
+Sa 82 verte    5c  OK
 Jy 82 verte    5c  --   80%
-S  82 orange   6a  OK
+Sa 82 orange   6a  OK
 Jy 82 verte    5c  --   60%
 Jy 81 jaune    5b+ --   40%
-S  80 beige    5c  OK
+Sa 80 beige    5c  OK
 
 Jy 31 saumon   5c  OK
-S  31 saumon   5c  OK
+Sa 31 saumon   5c  OK
 Jy 34 violette 5c+ --   50%
-S  34 violette 5c+ OK
+Sa 34 violette 5c+ OK
 Jy 34 violette 5c+ --   50%
-S  34 verte    6a  --   80% (à refaire !)
+Sa 34 verte    6a  --   80% (à refaire !)
 Jy 37 verte    5c+ OK
-S  37 verte    5c+ OK
+Sa 37 verte    5c+ OK
 Jy 57 bleue    5c  OK
-S  57 bleue    5c  OK
+Sa 57 bleue    5c  OK
 Jy 82 verte    5c  --   30%
-S  84 violette 6a+ --   10% (lol)
+Sa 84 violette 6a+ --   10% (lol)
 
 ### 2 novembre
 
 Jo 61 bleue    5a+    OK
-S  62 jaune    5c+/6a OK
+Sa 62 jaune    5c+/6a OK
 Jo 63 verte    5b     OK
-S  65 blanche  5c+    --   même pas foutu de pécho la 3e prise
-S  65 jaune    6a+    --   30%
-S  34 violette 5c+    OK
+Sa 65 blanche  5c+    --   même pas foutu de pécho la 3e prise
+Sa 65 jaune    6a+    --   30%
+Sa 34 violette 5c+    OK
 Jo 35 noire    5b     OK
-S  34 verte    6a     OK
+Sa 34 verte    6a     OK
 Jo 30 bleue    5a     --  à retenter !
-S  31 saumon   5c     OK
+Sa 31 saumon   5c     OK
 
 Jo 49 verte    5a     OK  à refaire en moins laborieux
-S  49 blanche  5c     OK
-S  46 noire    5c     OK
+Sa 49 blanche  5c     OK
+Sa 46 noire    5c     OK
 Jo 44 rouge    5a+    --  30% (passage difficile à réessayer)
-S  44 rouge    5a+    OK
+Sa 44 rouge    5a+    OK
 Jo 44 rouge    5a+    --  30% (pareil)
-S  42 orange   5c+    OK
+Sa 42 orange   5c+    OK
 Jo 78 verte    5a     --  80%
-S  80 beige    5c     OK
-S  82 orange   6a     OK
-S  36 jaune    5c     OK
+Sa 80 beige    5c     OK
+Sa 82 orange   6a     OK
+Sa 36 jaune    5c     OK
 
 ### 9 novembre
 
 Jo 85 rouge   5a    OK
 Jy 85 rouge   5a    OK
-S  84 beige   5b+   OK
+Sa 84 beige   5b+   OK
 Jo 26 jaune   5a    --  80% (dernière prise)
 Jy 26 jaune   5a    OK
-S  35 rouge   6a    OK
+Sa 35 rouge   6a    OK
 Jo 35 noire   5b    OK
 Jy 82 verte   5c    --  70%
-S  82 verte   5c    OK
+Sa 82 verte   5c    OK
 Jo 44 rouge   5a+   --  30%
 Jy 44 rouge   5a+   OK
-S  50 saumon  5c+   OK
+Sa 50 saumon  5c+   OK
 Jo 44 rouge   5a+   --  60% !
-S  83 rouge   5c+   OK
+Sa 83 rouge   5c+   OK
 Jy 83 rouge   5c+   --  80%
 
 Jo 49 verte   5a    OK
-S  50 bleue   6a    OK
+Sa 50 bleue   6a    OK
 Jy 44 bleue   5b/+  --  60%
 Jo 78 noire   5b    OK
-S  50 bleue   6a    OK
+Sa 50 bleue   6a    OK
 Jy 78 noire   5b    OK
 Jo 73 noire   5b    --  30%
 Jy 73 noire   5b    OK
-S  73 blanche 5c/6a --
+Sa 73 blanche 5c/6a --
 Jo 72 jaune   5a    --  50%
 
 ### 12 novembre
 
-S 44 bleue    5b/+   OK
-S 50 bleue    6a     OK
-S 34 verte    6a     OK
-S 20 verte    5b     OK
-S 73 blanche  5c/6a  OK
-S 71 orange   5c     OK
-S 62 jaune    5c+/6a OK
-S 65 blanche  5c+    OK
-S 66 rouge    5a     ET
-S 24 orange   5c+/6a OK
-S 84 violette 6a+    --  40%
+Sa 44 bleue    5b/+   OK
+Sa 50 bleue    6a     OK
+Sa 34 verte    6a     OK
+Sa 20 verte    5b     OK
+Sa 73 blanche  5c/6a  OK
+Sa 71 orange   5c     OK
+Sa 62 jaune    5c+/6a OK
+Sa 65 blanche  5c+    OK
+Sa 66 rouge    5a     ET
+Sa 24 orange   5c+/6a OK
+Sa 84 violette 6a+    --  40%
 
 ### 13 novembre
 
-S 73 blanche  5c/6a OK
-S 71 orange   5c    OK
-S 59 noire    5c    OK
-S 67 orange   6b    --  30%
-S 80 beige    5c    OK
-S  3 jaune    6a    --  30% pas de cotation?
-S 85 jaune    6a+   OK
-S 84 violette 6a+   --  40%
-S 38 rose     6a+   --  40%
-S 46 blanche  6a+   --  30%
+Sa 73 blanche  5c/6a OK
+Sa 71 orange   5c    OK
+Sa 59 noire    5c    OK
+Sa 67 orange   6b    --  30%
+Sa 80 beige    5c    OK
+Sa  3 jaune    6a    --  30% pas de cotation?
+Sa 85 jaune    6a+   OK
+Sa 84 violette 6a+   --  40%
+Sa 38 rose     6a+   --  40%
+Sa 46 blanche  6a+   --  30%
 
 ### 16 novembre
 
 Jy 66 bleue    4+     OK
-S  66 blanche  5c+    OK
+Sa 66 blanche  5c+    OK
 Jy 66 blanche  5c+    --  20%
 Jy 65 rouge    5b+    --  30%
-S  65 rose     6a/+   --  20%
+Sa 65 rose     6a/+   --  20%
 Jy 66 verte    5b     OK
 Jo 66 verte    5b     OK
-S  84 violette 6a+    --  40%
+Sa 84 violette 6a+    --  40%
 Jy 30 jaune    5c+    --  60%
 Jo 26 jaune    5a     OK
-S  30 jaune    5c+    --  70%
+Sa 30 jaune    5c+    --  70%
 Jy 30 jaune    5c+    --  60%
 Jo 50 noire    5a     OK
-S  50 bleue    6a     OK
-S  50 saumon   5c+    OK
+Sa 50 bleue    6a     OK
+Sa 50 saumon   5c+    OK
 Jo 63 verte    5b     --  70%
 Jy 63 verte    5b     OK
-S  62 jaune    5c+/6a OK
+Sa 62 jaune    5c+/6a OK
 
-S  61 noire   6a  --  10% lol
-S  46 blanche 6a+ --  30%
+Sa 61 noire   6a  --  10% lol
+Sa 46 blanche 6a+ --  30%
 Jo 78 verte   5a  OK
 Jy 78 verte   5a  OK
-S  30 jaune   5c+ --  90%
+Sa 30 jaune   5c+ --  90%
 Jo 23 bleue   5c  --  20%
 Jy 23 bleue   5c  --  50%
 
 ### 20 novembre
 
-S 73 blanche 5c/6a  OK
-S 65 rose    6a/+   --  40%
-S 62 jaune   5c+/6a OK
-S 60 rose    5c     OK  pris un pied rouge par erreur
-S 82 orange  6a     OK
-S 49 blanche 5c     OK
-S 73 rouge   6a     OK
-S 35 rouge   6a     --  90%  trop crevé pour le dernier mouvement
+Sa 73 blanche 5c/6a  OK
+Sa 65 rose    6a/+   --  40%
+Sa 62 jaune   5c+/6a OK
+Sa 60 rose    5c     OK  pris un pied rouge par erreur
+Sa 82 orange  6a     OK
+Sa 49 blanche 5c     OK
+Sa 73 rouge   6a     OK
+Sa 35 rouge   6a     --  90%  trop crevé pour le dernier mouvement
 
