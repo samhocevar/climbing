@@ -259,7 +259,7 @@ Jo 78 verte   5a  OK
 Jy 78 verte   5a  OK
 S  30 jaune   5c+ --  90%
 Jo 23 bleue   5c  --  20%
-Jo 23 bleue   5c  --  50%
+Jy 23 bleue   5c  --  50%
 
 ### 20 novembre
 
