@@ -85,7 +85,8 @@ function open_tab(id) {
 
     var l = document.getElementsByClassName('notes');
     for (var i = 0; i < l.length; ++i) {
-        l[i].style.display = l[i].classList.contains('notes' + id) ? "block" : "none";
+        l[i].style.display = l[i].classList.contains('notes' + id) ? "" : "none";
+        //l[i].style.visibility = l[i].classList.contains('notes' + id) ? "visible" : "collapse";
     }
 }
 function nav_tab(direction) {
@@ -114,8 +115,10 @@ document.onkeyup = function(e) {
 db = db.Database()
 
 print('<span>')
+print('<a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(-1)"><span class="tab">◀</span></a>')
 for name in db.all_names() + ['All']:
     print('''<a href="javascript:void(0)" onClick="open_tab('%s')"><span class="tab" id="tab%s">%s</span></a> ''' % (name, name, name))
+print('<a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(1)"><span class="tab">▶</span></a>')
 print('</span>')
 
 for name in db.all_names() + [None]:

@@ -154,7 +154,7 @@ class Database:
         print('<table><tr><th>Route</th><th>Grade</th>')
 
         for name in wanted_names:
-            print('<th>' + name + '</th>')
+            print('<th class="notes notes' + name + ' notesAll">' + name + '</th>')
         for name in wanted_names:
             print('<th class="notes notes' + name + '">Notes ('+ name + ')</th>')
 
@@ -188,7 +188,7 @@ class Database:
                     continue
                 print('<tr>\n  ' + tools.route_to_str(route, color) + '\n  ' + tools.grade_to_str(grade))
                 for name in wanted_names:
-                    print('  <td>' + val[name] + '</td>')
+                    print('  <td class="notes notes' + name + ' notesAll">' + val[name] + '</td>')
                 for name in wanted_names:
                     print('  <td class="notes notes' + name + '">' + comments[key][name] + '</td>')
                 print('</tr>')
