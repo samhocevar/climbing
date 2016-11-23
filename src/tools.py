@@ -121,7 +121,7 @@ def route_to_str(route, color):
     style = lut[color] if color in lut else lut['blanche']
     if config.ENGLISH and color in color_lut:
         color = color_lut[color]
-    return '<td class="round" style="background:%s;color:%s">%d&nbsp;%s</td>' % (style[0], style[1], route, color)
+    return '<td class="round" style="background:%s;color:%s">%s&nbsp;%s</td>' % (style[0], style[1], route, color)
 
 def ratio_to_str(ratio, prev_ratio):
     ret = '%.0f%%&nbsp;' % round(ratio * 100)

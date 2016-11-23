@@ -32,14 +32,14 @@ class Database:
             if not l:
                 continue
 
-            r = r'\s*(\w*)\s*(\d*)\s*(\w*)\s*([+/0-9a-z]*)\s*(OK|--)\s*(.*)'
+            r = r'\s*(\w*)\s*(\w*)\s*(\w*)\s*([+/0-9a-z]*)\s*(OK|--)\s*(.*)'
             m = re.match(r, l)
             if m:
                 name, route, color, grade, result, comm = m.groups(1)
                 self.names[name] = True
                 if result == 'ET':
                     continue # Not supported yet
-                self.perfs[cur_day] += [(name, int(route), color, grade, result, comm)]
+                self.perfs[cur_day] += [(name, route, color, grade, result, comm)]
                 continue
 
             r = r'^###\s*(\d*) (\w*):*\s*(.*)'
@@ -91,7 +91,7 @@ class Database:
                             color = tools.color_lut[color]
                         if graden >= gn:
                             important = graden > gn
-                            s += tools.res_to_str(result, percent, '%s%d %s (%s)%s' % (name, route, color, grade, comm), important)
+                            s += tools.res_to_str(result, percent, '%s%s %s (%s)%s' % (name, route, color, grade, comm), important)
                         k = 1 - abs(graden - gn)
                         if result == 'OK':
                             total += k
