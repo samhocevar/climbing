@@ -272,3 +272,18 @@ Sa 49 blanche 5c     OK
 Sa 73 rouge   6a     OK
 Sa 35 rouge   6a     --  90%  trop crevé pour le dernier mouvement
 
+### 23 novembre
+
+Jo 72 jaune 5a OK
+Sa 71 verte 5b+/c OK
+Jy 72 jaune 5a OK (malade)
+Jo 78 noire 5b OK
+Sa 65 rose 6a/+ -- 50%
+Sa 65 rose 6a/+ OK
+Jo PG verte 5b -- 20%
+Jy PG verte 5b -- 30% (malade)
+Sa 24 orange 5c+/6a -- 60%
+Jo 94 rouge 5b OK
+Jy 94 rouge 5b -- 30% (malade)
+Sa 35 rouge 6a -- 90% (dernière prise)
+Sa 36 orange 6b -- 20% (à travailler)
