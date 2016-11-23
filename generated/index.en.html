@@ -69,6 +69,11 @@ function open_tab(id) {
     document.getElementById('tab' + id).style.backgroundColor = "#555";
     document.getElementById('tab' + id).style.color = "#bbb";
     //document.getElementById('tab' + id).class = "tab active-tab";
+
+    var l = document.getElementsByClassName('notes');
+    for (var i = 0; i < l.length; ++i) {
+        l[i].style.display = l[i].classList.contains('notes' + id) ? "block" : "none";
+    }
 }
 function nav_tab(direction) {
     var l = document.getElementsByClassName('history');
@@ -2233,12 +2238,18 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
 <th>Jo</th>
 <th>Jy</th>
 <th>Sa</th>
+<th class="notes notesJo">Notes (Jo)</th>
+<th class="notes notesJy">Notes (Jy)</th>
+<th class="notes notesSa">Notes (Sa)</th>
 <tr>
   <td class="round" style="background:#f82;color:#000">67&nbsp;orange</td>
   <td class="round" style="color:#222;background:#cece60">6b</td>
   <td></td>
   <td></td>
   <td><span title="13/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">13/11: 30%</td>
 </tr>
 <tr>
   <td class="round" style="background:#f7a;color:#000">38&nbsp;pink</td>
@@ -2246,6 +2257,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="05/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="13/11: 40%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">05/10: 30% — 13/11: 40%</td>
 </tr>
 <tr>
   <td class="round" style="background:#fff;color:#000">46&nbsp;white</td>
@@ -2253,6 +2267,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="13/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="16/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">13/11: 30% — 16/11: 30%</td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">65&nbsp;yellow</td>
@@ -2260,6 +2277,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="02/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">02/11: 30%</td>
 </tr>
 <tr>
   <td class="round" style="background:#a5e;color:#000">84&nbsp;purple</td>
@@ -2267,6 +2287,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="12/10: bloqué dès la 2e prise" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="29/09: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="12/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="01/11: 10% (lol)" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="12/11: 40%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="13/11: 40%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="16/11: 40%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">12/10: bloqué dès la 2e prise</td>
+  <td class="notes notesSa">29/09: 30% — 12/10: 30% — 01/11: 10% (lol) — 12/11: 40% — 13/11: 40% — 16/11: 40%</td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">85&nbsp;yellow</td>
@@ -2274,6 +2297,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="05/10: difficile" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="13/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">05/10: difficile</td>
 </tr>
 <tr>
   <td class="round" style="background:#f7a;color:#000">65&nbsp;pink</td>
@@ -2281,6 +2307,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="16/11: 20%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="20/11: 40%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">16/11: 20% — 20/11: 40%</td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">3&nbsp;yellow</td>
@@ -2288,6 +2317,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="13/11: 30% pas de cotation?" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">13/11: 30% pas de cotation?</td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">34&nbsp;green</td>
@@ -2295,6 +2327,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="01/11: 80% (à refaire !)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">01/11: 80% (à refaire !)</td>
 </tr>
 <tr>
   <td class="round" style="background:#e44;color:#000">35&nbsp;red</td>
@@ -2302,6 +2337,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="05/10: 70%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="20/11: 90%  trop crevé pour le dernier mouvement" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">05/10: 70% — 20/11: 90%  trop crevé pour le dernier mouvement</td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">50&nbsp;blue</td>
@@ -2309,6 +2347,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="05/10" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">61&nbsp;black</td>
@@ -2316,6 +2357,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="16/11: 10% lol" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">16/11: 10% lol</td>
 </tr>
 <tr>
   <td class="round" style="background:#e44;color:#000">73&nbsp;red</td>
@@ -2323,6 +2367,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="20/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#f82;color:#000">82&nbsp;orange</td>
@@ -2330,6 +2377,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="19/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="19/10: première fois" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="20/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">19/10: 30%</td>
+  <td class="notes notesSa">12/10: 30% — 19/10: première fois</td>
 </tr>
 <tr>
   <td class="round" style="background:#f82;color:#000">24&nbsp;orange</td>
@@ -2337,6 +2387,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="12/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="12/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="19/10: 50% (une prise de plus que sam)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="26/10: 50% (comme d’hab)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="12/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="19/10: 50% (une prise de plus que la dernière fois)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="26/10: 50% (comme d’hab)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">12/10: 50% — 12/10: 50% — 19/10: 50% (une prise de plus que sam) — 26/10: 50% (comme d’hab)</td>
+  <td class="notes notesSa">12/10: 50% — 12/10: 50% — 19/10: 50% (une prise de plus que la dernière fois) — 26/10: 50% (comme d’hab)</td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">62&nbsp;yellow</td>
@@ -2344,6 +2397,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="26/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="20/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">26/10: 30%</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#fff;color:#000">73&nbsp;white</td>
@@ -2351,6 +2407,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="09/11" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="13/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="20/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">30&nbsp;yellow</td>
@@ -2358,6 +2417,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="16/11: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="16/11: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="16/11: 70%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="16/11: 90%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">16/11: 60% — 16/11: 60%</td>
+  <td class="notes notesSa">16/11: 70% — 16/11: 90%</td>
 </tr>
 <tr>
   <td class="round" style="background:#a5e;color:#000">34&nbsp;purple</td>
@@ -2365,6 +2427,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="26/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="01/11: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="01/11: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">26/10: 30% — 01/11: 50% — 01/11: 50%</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">37&nbsp;green</td>
@@ -2372,6 +2437,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="12/10" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="19/10: cramé" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="05/10: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="12/10: 80% (pas réussi la dernière prise)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">19/10: cramé</td>
+  <td class="notes notesSa">05/10: 60% — 12/10: 80% (pas réussi la dernière prise)</td>
 </tr>
 <tr>
   <td class="round" style="background:#f82;color:#000">42&nbsp;orange</td>
@@ -2379,6 +2447,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#fa8;color:#000">50&nbsp;salmon</td>
@@ -2386,6 +2457,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09: 80% (pas réussi la dernière prise)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="05/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: 80% (pas réussi la dernière prise)</td>
 </tr>
 <tr>
   <td class="round" style="background:#fff;color:#000">65&nbsp;white</td>
@@ -2393,6 +2467,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="19/10: 2e prise" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="19/10: 20%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="02/11: même pas foutu de pécho la 3e prise" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">19/10: 2e prise</td>
+  <td class="notes notesSa">19/10: 20% — 02/11: même pas foutu de pécho la 3e prise</td>
 </tr>
 <tr>
   <td class="round" style="background:#fff;color:#000">66&nbsp;white</td>
@@ -2400,6 +2477,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="16/11: 20%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">16/11: 20%</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#e44;color:#000">83&nbsp;red</td>
@@ -2407,6 +2487,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10: 80% (pas réussi la dernière prise)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="09/11: 80%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="19/10: 80% (trop crevé)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo">12/10: 60%</td>
+  <td class="notes notesJy">12/10: 80% (pas réussi la dernière prise) — 09/11: 80%</td>
+  <td class="notes notesSa">19/10: 80% (trop crevé)</td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">23&nbsp;blue</td>
@@ -2414,6 +2497,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="16/11: 20%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="16/11: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
+  <td class="notes notesJo">16/11: 20%</td>
+  <td class="notes notesJy">12/10: 50% — 16/11: 50%</td>
+  <td class="notes notesSa">12/10: 50%</td>
 </tr>
 <tr>
   <td class="round" style="background:#fa8;color:#000">31&nbsp;salmon</td>
@@ -2421,6 +2507,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">36&nbsp;yellow</td>
@@ -2428,6 +2517,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="05/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="26/10: 70%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">26/10: 70%</td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">46&nbsp;black</td>
@@ -2435,6 +2527,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#fff;color:#000">49&nbsp;white</td>
@@ -2442,6 +2537,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="20/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">57&nbsp;blue</td>
@@ -2449,6 +2547,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">59&nbsp;black</td>
@@ -2456,6 +2557,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="13/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#f7a;color:#000">60&nbsp;pink</td>
@@ -2463,6 +2567,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="20/11: pris un pied rouge par erreur" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">20/11: pris un pied rouge par erreur</td>
 </tr>
 <tr>
   <td class="round" style="background:#f82;color:#000">71&nbsp;orange</td>
@@ -2470,6 +2577,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09: trop crevé" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="13/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: trop crevé</td>
 </tr>
 <tr>
   <td class="round" style="background:#d97;color:#000">80&nbsp;beige</td>
@@ -2477,6 +2587,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="26/10: 80%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="13/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">26/10: 80%</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#fff;color:#000">81&nbsp;white</td>
@@ -2484,6 +2597,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09: arrivé en haut mais pas sûr d’avoir fini" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: arrivé en haut mais pas sûr d’avoir fini</td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">82&nbsp;green</td>
@@ -2491,6 +2607,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="19/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="01/11: 80%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="01/11: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="01/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="09/11: 70%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="26/10: 70% (crevé)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo">19/10: 30%</td>
+  <td class="notes notesJy">12/10: 30% — 01/11: 80% — 01/11: 60% — 01/11: 30% — 09/11: 70%</td>
+  <td class="notes notesSa">26/10: 70% (crevé)</td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">49&nbsp;yellow</td>
@@ -2498,6 +2617,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09: difficile" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="05/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: difficile</td>
 </tr>
 <tr>
   <td class="round" style="background:#e44;color:#000">65&nbsp;red</td>
@@ -2505,6 +2627,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="16/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">16/11: 30%</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">81&nbsp;yellow</td>
@@ -2512,6 +2637,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="01/11: 40%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="05/10: utilisé l’arête par erreur" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="05/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">01/11: 40%</td>
+  <td class="notes notesSa">05/10: utilisé l’arête par erreur</td>
 </tr>
 <tr>
   <td class="round" style="background:#d97;color:#000">84&nbsp;beige</td>
@@ -2519,6 +2647,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: 30%</td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">113&nbsp;black</td>
@@ -2526,6 +2657,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">44&nbsp;blue</td>
@@ -2533,6 +2667,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="26/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="09/11: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">26/10: 50% — 09/11: 60%</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">20&nbsp;green</td>
@@ -2540,6 +2677,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="12/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">26&nbsp;blue</td>
@@ -2547,6 +2687,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="19/10: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="29/09: facile" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo">19/10: 30%</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: facile</td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">35&nbsp;black</td>
@@ -2554,6 +2697,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">49&nbsp;green</td>
@@ -2561,6 +2707,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="05/10: facile" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">05/10: facile</td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">63&nbsp;green</td>
@@ -2568,6 +2717,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="16/11: 70%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo">16/11: 70%</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">66&nbsp;green</td>
@@ -2575,6 +2727,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">70&nbsp;blue</td>
@@ -2582,6 +2737,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09: première fois que j’y arrive" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: première fois que j’y arrive</td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">73&nbsp;black</td>
@@ -2589,6 +2747,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="09/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo">09/11: 30%</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">78&nbsp;black</td>
@@ -2596,6 +2757,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">84&nbsp;blue</td>
@@ -2603,6 +2767,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">85&nbsp;green</td>
@@ -2610,6 +2777,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="26/10: 80%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="29/09" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="05/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="12/10: trop crevé" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo">12/10: 60%</td>
+  <td class="notes notesJy">26/10: 80%</td>
+  <td class="notes notesSa">12/10: trop crevé</td>
 </tr>
 <tr>
   <td class="round" style="background:#a5e;color:#000">89&nbsp;purple</td>
@@ -2617,6 +2787,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="26/10: 80%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy">26/10: 80%</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">112&nbsp;green</td>
@@ -2624,6 +2797,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="19/10: 40%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo">19/10: 40%</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#e44;color:#000">44&nbsp;red</td>
@@ -2631,6 +2807,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="02/11: 30% (passage difficile à réessayer)" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="02/11: 30% (pareil)" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="09/11: 30%" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span><span title="09/11: 60% !" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo">02/11: 30% (passage difficile à réessayer) — 02/11: 30% (pareil) — 09/11: 30% — 09/11: 60% !</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">61&nbsp;blue</td>
@@ -2638,6 +2817,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="02/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">24&nbsp;green</td>
@@ -2645,6 +2827,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo">12/10: 50%</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">26&nbsp;yellow</td>
@@ -2652,6 +2837,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: 80% (pas réussi les deux dernières prises)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="09/11: 80% (dernière prise)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo">12/10: 80% (pas réussi les deux dernières prises) — 09/11: 80% (dernière prise)</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">30&nbsp;blue</td>
@@ -2659,6 +2847,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="02/11: à retenter !" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td></td>
   <td></td>
+  <td class="notes notesJo">12/10: 60% — 02/11: à retenter !</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">37&nbsp;black</td>
@@ -2666,6 +2857,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#fff;color:#000">38&nbsp;white</td>
@@ -2673,6 +2867,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: 80% (pas réussi les quelques dernières prises)" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="19/10" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td><span title="19/10: cramé" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td></td>
+  <td class="notes notesJo">12/10: 80% (pas réussi les quelques dernières prises)</td>
+  <td class="notes notesJy">19/10: cramé</td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">49&nbsp;green</td>
@@ -2680,6 +2877,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="19/10: 60%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="02/11: à refaire en moins laborieux" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
   <td></td>
+  <td class="notes notesJo">19/10: 60% — 02/11: à refaire en moins laborieux</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">50&nbsp;black</td>
@@ -2687,6 +2887,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
   <td><span title="29/09" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#a5e;color:#000">65&nbsp;purple</td>
@@ -2694,6 +2897,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#dd4;color:#000">72&nbsp;yellow</td>
@@ -2701,6 +2907,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="09/11: 50%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span></td>
   <td></td>
   <td></td>
+  <td class="notes notesJo">09/11: 50%</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">78&nbsp;green</td>
@@ -2708,6 +2917,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="02/11: 80%" style="color:#ec6;font-size:1.0em;font-weight:bold">✕</span><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo">02/11: 80%</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">82&nbsp;blue</td>
@@ -2715,6 +2927,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#e44;color:#000">85&nbsp;red</td>
@@ -2722,6 +2937,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: première fois" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="26/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span><span title="09/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="29/09: facile" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo">12/10: première fois</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: facile</td>
 </tr>
 <tr>
   <td class="round" style="background:#6d6;color:#000">28&nbsp;green</td>
@@ -2729,6 +2947,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td></td>
   <td><span title="29/09: facile" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa">29/09: facile</td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">42&nbsp;blue</td>
@@ -2736,6 +2957,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="01/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">65&nbsp;blue</td>
@@ -2743,6 +2967,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="19/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#68e;color:#000">66&nbsp;blue</td>
@@ -2750,6 +2977,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td></td>
   <td><span title="16/11" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">81&nbsp;black</td>
@@ -2757,6 +2987,9 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10: trop crevé" style="color:#f66;font-size:1.0em;font-weight:bold">✕</span></td>
   <td></td>
   <td></td>
+  <td class="notes notesJo">12/10: trop crevé</td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 <tr>
   <td class="round" style="background:#333;color:#eee">83&nbsp;black</td>
@@ -2764,8 +2997,12 @@ style="position:relative; top:-3.81px; color:#0c3">•••••••••�
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td><span title="12/10" style="color:#6d7;font-size:1.0em;font-weight:bold">✔</span></td>
   <td></td>
+  <td class="notes notesJo"></td>
+  <td class="notes notesJy"></td>
+  <td class="notes notesSa"></td>
 </tr>
 </table>
+<script>open_tab("Jo")</script>
 
 </body>
 </html>

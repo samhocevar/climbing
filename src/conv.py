@@ -82,6 +82,11 @@ function open_tab(id) {
     document.getElementById('tab' + id).style.backgroundColor = "#555";
     document.getElementById('tab' + id).style.color = "#bbb";
     //document.getElementById('tab' + id).class = "tab active-tab";
+
+    var l = document.getElementsByClassName('notes');
+    for (var i = 0; i < l.length; ++i) {
+        l[i].style.display = l[i].classList.contains('notes' + id) ? "block" : "none";
+    }
 }
 function nav_tab(direction) {
     var l = document.getElementsByClassName('history');
@@ -124,6 +129,8 @@ wanted_names = []
 for name in db.all_names():
     wanted_names += [name]
 db.print_routes(wanted_names)
+
+print('<script>open_tab("%s")</script>' % (db.all_names()[0]))
 
 print("""
 </body>

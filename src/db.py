@@ -155,8 +155,8 @@ class Database:
 
         for name in wanted_names:
             print('<th>' + name + '</th>')
-        if len(wanted_names) == 1:
-            print('<th>Notes</th>')
+        for name in wanted_names:
+            print('<th class="notes notes' + name + '">Notes ('+ name + ')</th>')
 
         aggregated = {}
         comments = {}
@@ -189,8 +189,8 @@ class Database:
                 print('<tr>\n  ' + tools.route_to_str(route, color) + '\n  ' + tools.grade_to_str(grade))
                 for name in wanted_names:
                     print('  <td>' + val[name] + '</td>')
-                if len(wanted_names) == 1:
-                    print('  <td>' + comments[key][name] + '</td>')
+                for name in wanted_names:
+                    print('  <td class="notes notes' + name + '">' + comments[key][name] + '</td>')
                 print('</tr>')
 
         print('</table>')
