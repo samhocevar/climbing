@@ -134,7 +134,7 @@ def hist_to_str(history, first_day, last_day):
     #ch = '-'
     ret = '<span style="display:block;height:17px;margin:1px 4px 1px 2px; font-size:0.65em; letter-spacing:-0.22em">'
     DOTS_PER_DAY = 3
-    prev_r, prev_n1 = -1, 0
+    prev_d, prev_r, prev_n1, prev_color = 0, -1, 0, None
     d, step = first_day, 0.0625 * 1.25
     while True:
         # Find closest data
@@ -148,20 +148,25 @@ def hist_to_str(history, first_day, last_day):
             t = (d - history[n1][0]) / (history[n2][0] - history[n1][0])
         #t = n - int(n)
         t = (3.0 - 2.0 * t) * t * t
-        r = history[n1][1] * (1 - t) + history[n2][1] * t
-        style = ' top:%.2fpx; color:#%x%x3' % (13 - r * 17, int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
-        if int(64 * r) != int(64 * prev_r):
+        if d < history[n1][0]:
+            r = -1
+            color = 'transparent'
+            style = ' color:' + color
+        else:
+            r = history[n1][1] * (1 - t) + history[n2][1] * t
+            color = '#%x%x3' % (int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
+            style = ' top:%.2fpx; color:%s' % (13 - r * 17, color)
+        if int(64 * r) != int(64 * prev_r) or color != prev_color:
             if prev_r != -1:
                 ret += '</span>'
             # Use \n here to avoid super long lines…
             ret += '<span\nstyle="position:relative;%s">' % (style)
-            prev_r = r
-        if n1 != prev_n1:
-            #ret += '</span>|<span\nstyle="position:relative;%s">' % (style)
+        if n1 != prev_n1 or (d >= history[n1][0] and prev_d < history[n1][0]):
             ret += '<span\nstyle="color:white">/</span>'
-            prev_n1 = n1
+            #ret += '<span>/</span>'
         else:
             ret += ch
+        prev_d, prev_r, prev_n1, prev_color = d, r, n1, color
         if d > last_day:
             break
         d += 3600.0 * 24.0 / DOTS_PER_DAY

@@ -99,8 +99,7 @@ class Database:
                 if self.all_perfs(d, climber_name):
                     total, weight = total * config.DECAY, weight * config.DECAY
                 s += '</td>\n'
-            first_day = min(self.all_days()) - 3600.0 * 24.0
-            history = [(first_day, 0)] + history # Add fake first day
+            first_day = min(self.all_days())
             last_day = max(self.all_days())
             print('  <td>%s</td>\n  <td>%s</td>\n%s</tr>' % (tools.hist_to_str(history, first_day, last_day), tools.ratio_to_str(ratio, prev_ratio), s))
 
@@ -145,7 +144,7 @@ class Database:
         for name in wanted_names:
             print('<th class="notes notes' + name + ' notesAll">' + name + '</th>')
         for name in wanted_names:
-            print('<th class="notes notes' + name + '">Notes ('+ name + ')</th>')
+            print('<th class="notes notes' + name + '">Notes</th>')
 
         aggregated = {}
         comments = {}
