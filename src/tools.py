@@ -129,25 +129,42 @@ def ratio_to_str(ratio, prev_ratio):
     ret += '(=)' if delta == 0 else '(%+d)' % delta
     return ret
 
-def hist_to_str(history):
+def hist_to_str(history, first_day, last_day):
     ch = '•'
     #ch = '-'
-    history = [(0, 0)] + history
     ret = '<span style="display:block;height:17px;margin:1px 4px 1px 2px; font-size:0.65em; letter-spacing:-0.22em">'
-    prev_r, n, step = -1, 0, 0.0625 * 1.25
-    while n <= len(history) - 1:
-        t = n - int(n)
+    DOTS_PER_DAY = 3
+    prev_r, prev_n1 = -1, 0
+    d, step = first_day, 0.0625 * 1.25
+    while True:
+        # Find closest data
+        n1 = 0
+        while n1 + 1 < len(history) and history[n1 + 1][0] < d:
+            n1 += 1
+        n2 = min(n1 + 1, len(history) - 1)
+        if n1 == n2:
+            t = 0
+        else:
+            t = (d - history[n1][0]) / (history[n2][0] - history[n1][0])
+        #t = n - int(n)
         t = (3.0 - 2.0 * t) * t * t
-        r = history[int(n)][1] * (1 - t) + history[math.ceil(n)][1] * t
+        r = history[n1][1] * (1 - t) + history[n2][1] * t
         style = ' top:%.2fpx; color:#%x%x3' % (13 - r * 17, int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
-        # Use \n here to avoid super long lines…
         if int(64 * r) != int(64 * prev_r):
             if prev_r != -1:
                 ret += '</span>'
+            # Use \n here to avoid super long lines…
             ret += '<span\nstyle="position:relative;%s">' % (style)
             prev_r = r
-        ret += ch
-        n += step
+        if n1 != prev_n1:
+            #ret += '</span>|<span\nstyle="position:relative;%s">' % (style)
+            ret += '<span\nstyle="color:white">/</span>'
+            prev_n1 = n1
+        else:
+            ret += ch
+        if d > last_day:
+            break
+        d += 3600.0 * 24.0 / DOTS_PER_DAY
     ret += '</span></span>'
     return ret
 
