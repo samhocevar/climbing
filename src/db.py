@@ -1,23 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import re, sys
+import re, sys, datetime
+from dateutil.parser import parse
 import config, tools
-
-month_lut = {
-    'janvier'   : 1,
-    'février'   : 2,
-    'mars'      : 3,
-    'avril'     : 4,
-    'mai'       : 5,
-    'juin'      : 6,
-    'juillet'   : 7,
-    'août'      : 8,
-    'septembre' : 9,
-    'octobre'   : 10,
-    'novembre'  : 11,
-    'décembre'  : 12,
-}
 
 class Database:
     def __init__(self):
@@ -42,11 +28,11 @@ class Database:
                 self.perfs[cur_day] += [(name, route, color, grade, result, comm)]
                 continue
 
-            r = r'^###\s*(\d*) (\w*):*\s*(.*)'
+            r = r'^###\s*([\w\s]*):*\s*(.*)'
             m = re.match(r, l)
             if m:
-                day, month, _ = m.groups(1)
-                date = '%02d/%02d' % (int(day), month_lut[month])
+                user_date, _ = m.groups(1)
+                date = parse(user_date).timestamp()
                 cur_day = date
                 if date not in self.days:
                     self.days += [date]
@@ -67,7 +53,7 @@ class Database:
         print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')
         volume = {}
         for d in self.all_days():
-            print('<th>%s</th>' % (d if self.all_perfs(d, climber_name) else ''))
+            print('<th>%s</th>' % (datetime.date.fromtimestamp(d).strftime('%d/%m') if self.all_perfs(d, climber_name) else ''))
             volume[d] = [0, 0]
         print('</tr>')
 
@@ -109,7 +95,7 @@ class Database:
                 if self.all_perfs(d, climber_name):
                     prev_ratio = ratio
                 ratio = total / (weight + 1e-8)
-                history += [ratio]
+                history += [(d, ratio)]
                 if self.all_perfs(d, climber_name):
                     total, weight = total * config.DECAY, weight * config.DECAY
                 s += '</td>\n'
@@ -176,11 +162,11 @@ class Database:
                     continue
                 key = (route, color, grade)
                 percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
-                aggregated[key][name] += tools.res_to_str(result, percent, d + ': ' + comm if comm else d, False)
+                aggregated[key][name] += tools.res_to_str(result, percent, datetime.date.fromtimestamp(d).strftime('%d/%m') + (': ' + comm if comm else ''), False)
                 if comm:
                     if comments[key][name]:
                         comments[key][name] += ' — '
-                    comments[key][name] += d + ': ' + comm
+                    comments[key][name] += datetime.date.fromtimestamp(d).strftime('%d/%m: ') + comm
         for gn in reversed(tools.all_grades('3', '6c+')):
             for key, val in sorted(aggregated.items()):
                 route, color, grade = key

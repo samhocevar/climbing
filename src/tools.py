@@ -132,13 +132,13 @@ def ratio_to_str(ratio, prev_ratio):
 def hist_to_str(history):
     ch = '•'
     #ch = '-'
-    history = [0] + history
+    history = [(0, 0)] + history
     ret = '<span style="display:block;height:17px;margin:1px 4px 1px 2px; font-size:0.65em; letter-spacing:-0.22em">'
     prev_r, n, step = -1, 0, 0.0625 * 1.25
     while n <= len(history) - 1:
         t = n - int(n)
         t = (3.0 - 2.0 * t) * t * t
-        r = history[int(n)] * (1 - t) + history[math.ceil(n)] * t
+        r = history[int(n)][1] * (1 - t) + history[math.ceil(n)][1] * t
         style = ' top:%.2fpx; color:#%x%x3' % (13 - r * 17, int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
         # Use \n here to avoid super long lines…
         if int(64 * r) != int(64 * prev_r):
