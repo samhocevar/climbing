@@ -70,7 +70,7 @@ class Database:
                 for name, route, color, grade, result, comm in self.all_perfs(d, climber_name):
                     graden = tools.grade_to_num(grade)
                     if abs(graden - gn) < 1:
-                        percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
+                        percent = int(comm[0:comm.find('%')]) if comm and re.match('^\d+%', comm) else 0
                         comm = ': %s' % comm if comm else ''
                         name = '[%s] ' % name if not climber_name else ''
                         if config.ENGLISH and color in tools.color_lut:
@@ -163,7 +163,7 @@ class Database:
                 if name not in wanted_names:
                     continue
                 key = (route, color, grade)
-                percent = int(comm[0:2]) if comm and re.match('^\d\d%', comm) else 0
+                percent = int(comm[0:comm.find('%')]) if comm and re.match('^\d+%', comm) else 0
                 aggregated[key][name] += tools.res_to_str(result, percent, datetime.date.fromtimestamp(d).strftime('%d/%m') + (': ' + comm if comm else ''), False)
                 if comm:
                     if comments[key][name]:

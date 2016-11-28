@@ -266,7 +266,7 @@ Jy 23 bleue   5c  --  50%
 Sa 73 blanche 5c/6a  OK
 Sa 65 rose    6a/+   --  40%
 Sa 62 jaune   5c+/6a OK
-Sa 60 rose    5c     OK  pris un pied rouge par erreur
+Sa 60 rose    5c     --  100%  pris un pied rouge par erreur
 Sa 82 orange  6a     OK
 Sa 49 blanche 5c     OK
 Sa 73 rouge   6a     OK
