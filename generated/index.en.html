@@ -78,14 +78,15 @@ function open_tab(id) {
 }
 function nav_tab(direction) {
     var l = document.getElementsByClassName('history');
-    for (var i = 0; i < l.length; ++i) {
+    var n = l.length - 1; // don’t cycle through the “All” button
+    for (var i = 0; i < n; ++i) {
         if (l[i].style.display == "block") {
-            open_tab(l[(i + direction + l.length) % l.length].id);
+            open_tab(l[(i + direction + n) % n].id);
             return;
         }
     }
 }
-document.onkeyup = function(e) {
+document.onkeydown = function(e) {
     var e = e || window.event;
     if (e.which == 37) { // left
         nav_tab(-1);
@@ -103,8 +104,10 @@ document.onkeyup = function(e) {
 <a href="javascript:void(0)" onClick="open_tab('Jo')"><span class="tab" id="tabJo">Jo</span></a> 
 <a href="javascript:void(0)" onClick="open_tab('Jy')"><span class="tab" id="tabJy">Jy</span></a> 
 <a href="javascript:void(0)" onClick="open_tab('Sa')"><span class="tab" id="tabSa">Sa</span></a> 
-<a href="javascript:void(0)" onClick="open_tab('All')"><span class="tab" id="tabAll">All</span></a> 
 <a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(1)"><span class="tab">▶</span></a>
+</span>
+<span style="margin:0 20px">
+<a href="javascript:void(0)" onClick="open_tab('All')"><span class="tab" id="tabAll">All</span></a> 
 </span>
 <div class="history" id="Jo">
 <table><tr><th>Grade</th><th>Trend</th><th>Avg</th>

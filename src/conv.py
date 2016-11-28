@@ -91,14 +91,15 @@ function open_tab(id) {
 }
 function nav_tab(direction) {
     var l = document.getElementsByClassName('history');
-    for (var i = 0; i < l.length; ++i) {
+    var n = l.length - 1; // don’t cycle through the “All” button
+    for (var i = 0; i < n; ++i) {
         if (l[i].style.display == "block") {
-            open_tab(l[(i + direction + l.length) % l.length].id);
+            open_tab(l[(i + direction + n) % n].id);
             return;
         }
     }
 }
-document.onkeyup = function(e) {
+document.onkeydown = function(e) {
     var e = e || window.event;
     if (e.which == 37) { // left
         nav_tab(-1);
@@ -114,11 +115,15 @@ document.onkeyup = function(e) {
 
 db = db.Database()
 
+button = '''<a href="javascript:void(0)" onClick="open_tab('%s')"><span class="tab" id="tab%s">%s</span></a> '''
 print('<span>')
 print('<a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(-1)"><span class="tab">◀</span></a>')
-for name in db.all_names() + ['All']:
-    print('''<a href="javascript:void(0)" onClick="open_tab('%s')"><span class="tab" id="tab%s">%s</span></a> ''' % (name, name, name))
+for name in db.all_names():
+    print(button % (name, name, name))
 print('<a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(1)"><span class="tab">▶</span></a>')
+print('</span>')
+print('<span style="margin:0 20px">')
+print(button % ('All', 'All', 'All'))
 print('</span>')
 
 for name in db.all_names() + [None]:
