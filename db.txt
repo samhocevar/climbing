@@ -71,10 +71,10 @@ Sa 85 verte    5b     --   trop crevé
 
 Jo 65  bleue    4+     OK
 Jy 65  bleue    4+     OK
-Sa 65  blanche  5c+    --   20%
+Sa 66  blanche  5c+    --   20%
 Sa 65  violette 5a     OK
 Jo 65  violette 5a     OK
-Jy 65  blanche  5c+    --   2e prise
+Jy 66  blanche  5c+    --   2e prise
 Jy 65  violette 5a     OK
 Sa 24  orange   5c+/6a --   50% (une prise de plus que la dernière fois)
 Jo 24  verte    5a     OK
@@ -156,7 +156,7 @@ Sa 84 violette 6a+ --   10% (lol)
 Jo 61 bleue    5a+    OK
 Sa 62 jaune    5c+/6a OK
 Jo 63 verte    5b     OK
-Sa 65 blanche  5c+    --   même pas foutu de pécho la 3e prise
+Sa 66 blanche  5c+    --   même pas foutu de pécho la 3e prise
 Sa 65 jaune    6a+    --   30%
 Sa 34 violette 5c+    OK
 Jo 35 noire    5b     OK
@@ -214,7 +214,7 @@ Sa 20 verte    5b     OK
 Sa 73 blanche  5c/6a  OK
 Sa 71 orange   5c     OK
 Sa 62 jaune    5c+/6a OK
-Sa 65 blanche  5c+    OK
+Sa 66 blanche  5c+    OK
 Sa 66 rouge    5a     ET
 Sa 24 orange   5c+/6a OK
 Sa 84 violette 6a+    --  40%
@@ -224,7 +224,7 @@ Sa 84 violette 6a+    --  40%
 Sa 73 blanche  5c/6a OK
 Sa 71 orange   5c    OK
 Sa 59 noire    5c    OK
-Sa 67 orange   6b    --  30%
+Sa 67 orange   6b    --  30% (vraiment trop difficile pour le moment)
 Sa 80 beige    5c    OK
 Sa  3 jaune    6a    --  30% pas de cotation?
 Sa 85 jaune    6a+   OK
@@ -274,44 +274,44 @@ Sa 35 rouge   6a     --  90%  trop crevé pour le dernier mouvement
 
 ### 23 november 2016
 
-Jo 72 jaune 5a OK
-Sa 71 verte 5b+/c OK
-Jy 72 jaune 5a OK (malade)
-Jo 78 noire 5b OK
-Sa 65 rose 6a/+ -- 50%
-Sa 65 rose 6a/+ OK
-Jo PG verte 5b -- 20%
-Jy PG verte 5b -- 30% (malade)
-Sa 24 orange 5c+/6a -- 60%
-Jo 94 rouge 5b OK
-Jy 94 rouge 5b -- 30% (malade)
-Sa 35 rouge 6a -- 90% (dernière prise)
-Sa 36 orange 6b -- 20% (à travailler)
+Jo 72 jaune  5a     OK
+Sa 71 verte  5b+/c  OK
+Jy 72 jaune  5a     OK  (malade)
+Jo 78 noire  5b     OK
+Sa 65 rose   6a/+   --  50%
+Sa 65 rose   6a/+   OK
+Jo PG verte  5b     --  20%
+Jy PG verte  5b     --  30% (malade)
+Sa 24 orange 5c+/6a --  60%
+Jo 94 rouge  5b     OK
+Jy 94 rouge  5b     --  30% (malade)
+Sa 35 rouge  6a     --  90% (dernière prise)
+Sa 36 orange 6b     --  20% (à travailler)
 
 ### 30 november 2016
 
-Sa 73 rouge 6a OK
-Jo 66 rouge 5a OK
-Jy 66 verte 5b -- 80%
-Sa 35 rouge 6a OK
-Jo 35 noire 5b OK
-Jy 35 noire 5b OK
-Sa 82 orange 6a OK
-Jo 81 jaune 5b+ OK
-Jy 81 jaune 5b+ OK
-Sa 81 rose 6b OK
-Jo 84 beige 5b+ -- 60%
-Jy 84 beige 5b+ -- 70%
+Sa 73 rouge  6a     OK
+Jo 66 rouge  5a     OK
+Jy 66 verte  5b     --  80%
+Sa 35 rouge  6a     OK
+Jo 35 noire  5b     OK
+Jy 35 noire  5b     OK
+Sa 82 orange 6a     OK
+Jo 81 jaune  5b+    OK
+Jy 81 jaune  5b+    OK
+Sa 81 rose   6b     OK
+Jo 84 beige  5b+    --  60%
+Jy 84 beige  5b+    --  70%
 Sa 24 orange 5c+/6a OK
-Jo 26 bleue 5b OK
-Jy 26 bleue 5b OK
+Jo 26 bleue  5b     OK
+Jy 26 bleue  5b     OK
 
-Jo 85 verte 5b OK
-Jy 84 beige 5b+ -- 60%
-Sa 84 violette 6a+ -- 70%
-Jo 59 rouge 5b -- 30%
-Jy 59 rouge 5b -- 40%
-Sa 36 orange 6b -- 20%
-Jo 91 bleue 5a OK
-Sa 21 bleue 6a -- 20%
+Jo 85 verte    5b  OK
+Jy 84 beige    5b+ --  60%
+Sa 84 violette 6a+ --  70% (mieux que d’habitude !)
+Jo 59 rouge    5b  --  30%
+Jy 59 rouge    5b  --  40%
+Sa 36 orange   6b  --  20%
+Jo 91 bleue    5a  OK
+Sa 21 bleue    6a  --  20% (à réessayer)
 

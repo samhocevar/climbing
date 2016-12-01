@@ -88,7 +88,6 @@
 63 verte 5b
 64 beige 4+
 64 rouge 5b+
-65 blanche 5c+ # disparue
 65 bleue 4+ # disparue
 65 jaune 6a+
 65 rose 6a/+
