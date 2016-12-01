@@ -169,7 +169,9 @@ def hist_to_str(history, first_day, last_day):
         prev_d, prev_r, prev_n1, prev_color = d, r, n1, color
         if d > last_day:
             break
-        d += 3600.0 * 24.0 / DOTS_PER_DAY
+        # Normal step is 1, but we make recent days print more dots
+        mult = 1.3 * pow(0.5 + (last_day - d) / (last_day - first_day), 2.0)
+        d += mult * 3600.0 * 24.0 / DOTS_PER_DAY
     ret += '</span></span>'
     return ret
 
