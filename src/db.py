@@ -11,7 +11,7 @@ class Database:
         self.days = []
         self.perfs = {}
 
-        cur_day = None
+        cur_day, cur_gym = 0.0, ''
 
         for l in sys.stdin.readlines():
             l = l.strip()
@@ -25,13 +25,13 @@ class Database:
                 self.names[name] = True
                 if result == 'ET':
                     continue # Not supported yet
-                self.perfs[cur_day] += [(name, route, color, grade, result, comm)]
+                self.perfs[cur_day] += [(name, cur_gym, route, color, grade, result, comm)]
                 continue
 
             r = r'^###\s*([\w\s]*):*\s*(.*)'
             m = re.match(r, l)
             if m:
-                user_date, _ = m.groups(1)
+                user_date, cur_gym = m.groups(1)
                 date = parse(user_date).timestamp()
                 cur_day = date
                 if date not in self.days:
@@ -67,7 +67,7 @@ class Database:
             s = ''
             for d in self.all_days():
                 s += '  <td>'
-                for name, route, color, grade, result, comm in self.all_perfs(d, climber_name):
+                for name, gym, route, color, grade, result, comm in self.all_perfs(d, climber_name):
                     graden = tools.grade_to_num(grade)
                     if abs(graden - gn) < 1:
                         percent = int(comm[0:comm.find('%')]) if comm and re.match('^\d+%', comm) else 0
@@ -77,7 +77,7 @@ class Database:
                             color = tools.color_lut[color]
                         if graden >= gn:
                             important = graden > gn
-                            s += tools.res_to_str(result, percent, '%s%s %s (%s)%s' % (name, route, color, grade, comm), important)
+                            s += tools.res_to_str(result, percent, '%s%s %s %s (%s)%s' % (name, gym, route, color, grade, comm), important)
                         k = 1 - abs(graden - gn)
                         if result == 'OK':
                             total += k
@@ -110,7 +110,7 @@ class Database:
         for d in self.all_days():
             best[d] = None
             avg[d] = []
-            for name, route, color, grade, result, comm in self.all_perfs(d, climber_name):
+            for name, gym, route, color, grade, result, comm in self.all_perfs(d, climber_name):
                 if result == 'OK':
                     if not best[d] or tools.grade_to_num(grade) > tools.grade_to_num(best[d]):
                         best[d] = grade
@@ -139,7 +139,7 @@ class Database:
 
 
     def print_routes(self, wanted_names):
-        print('<table><tr><th>Route</th><th>Grade</th>')
+        print('<table><tr><th>Gym</th><th>Route</th><th>Grade</th>')
 
         for name in wanted_names:
             print('<th class="notes notes' + name + ' notesAll">' + name + '</th>')
@@ -149,20 +149,20 @@ class Database:
         aggregated = {}
         comments = {}
         for d in self.all_days():
-            for name, route, color, grade, result, comm in self.all_perfs(d):
+            for name, gym, route, color, grade, result, comm in self.all_perfs(d):
                 if name not in wanted_names:
                     continue
-                key = (route, color, grade)
+                key = (gym, route, color, grade)
                 aggregated[key] = {}
                 comments[key] = {}
                 for name in wanted_names:
                     aggregated[key][name] = ''
                     comments[key][name] = ''
         for d in self.all_days():
-            for name, route, color, grade, result, comm in self.all_perfs(d):
+            for name, gym, route, color, grade, result, comm in self.all_perfs(d):
                 if name not in wanted_names:
                     continue
-                key = (route, color, grade)
+                key = (gym, route, color, grade)
                 percent = int(comm[0:comm.find('%')]) if comm and re.match('^\d+%', comm) else 0
                 aggregated[key][name] += tools.res_to_str(result, percent, datetime.date.fromtimestamp(d).strftime('%d/%m') + (': ' + comm if comm else ''), False)
                 if comm:
@@ -171,10 +171,10 @@ class Database:
                     comments[key][name] += datetime.date.fromtimestamp(d).strftime('%d/%m: ') + comm
         for gn in reversed(tools.all_grades('3', '6c+')):
             for key, val in sorted(aggregated.items()):
-                route, color, grade = key
+                gym, route, color, grade = key
                 if tools.grade_to_num(grade) != gn:
                     continue
-                print('<tr>\n  ' + tools.route_to_str(route, color) + '\n  ' + tools.grade_to_str(grade))
+                print('<tr><td>' + gym + '</td>\n  ' + tools.route_to_str(route, color) + '\n  ' + tools.grade_to_str(grade))
                 for name in wanted_names:
                     print('  <td class="notes notes' + name + ' notesAll">' + val[name] + '</td>')
                 for name in wanted_names:
