@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import math
+import math, datetime
 import config
 
 gr2str_lut = {
@@ -103,7 +103,7 @@ def res_to_str(result, percent, comment, important):
         color, ch = '#f66', '✕'
     deco = ';text-shadow:0px 0px 2px #fff' if important else ''
     #deco += ';text-decoration:underline' if important else ''
-    return '<span title="%s" style="color:%s;font-size:1.0em;font-weight:bold%s">%s</span>' % (comment, color, deco, ch)
+    return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default;font-weight:bold%s">%s</span>' % (comment, color, deco, ch)
 
 def route_to_str(route, color):
     lut = { 'beige':    ['#d97', '#000'],
@@ -134,7 +134,7 @@ def hist_to_str(history, first_day, last_day):
     #ch = '-'
     ret = '<span style="display:block;height:17px;margin:1px 4px 1px 2px; font-size:0.65em; letter-spacing:-0.22em">'
     DOTS_PER_DAY = 3
-    prev_d, prev_r, prev_n1, prev_color = 0, -1, 0, None
+    run, prev_d, prev_r, prev_n1, prev_color = 0, 0, -1, 0, None
     d, step = first_day, 0.0625 * 1.25
     while True:
         # Find closest data
@@ -156,17 +156,20 @@ def hist_to_str(history, first_day, last_day):
             r = history[n1][1] * (1 - t) + history[n2][1] * t
             color = '#%x%x3' % (int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
             style = ' top:%.2fpx; color:%s' % (13 - r * 17, color)
-        if int(64 * r) != int(64 * prev_r) or color != prev_color:
+        if int(64 * r) != int(64 * prev_r) or color != prev_color or run > 20:
             if prev_r != -1:
                 ret += '</span>'
             # Use \n here to avoid super long lines…
-            ret += '<span\nstyle="position:relative;%s">' % (style)
+            ret += '<span\ntitle="%s: %.0f%%" style="position:relative;%s">' % (datetime.date.fromtimestamp(d).strftime('%d/%m'), r * 100, style)
+            prev_r = r
+            run = 0
         if n1 != prev_n1 or (d >= history[n1][0] and prev_d < history[n1][0]):
             ret += '<span\nstyle="color:white">/</span>'
             #ret += '<span>/</span>'
         else:
             ret += ch
-        prev_d, prev_r, prev_n1, prev_color = d, r, n1, color
+            run += 1
+        prev_d, prev_n1, prev_color = d, n1, color
         if d > last_day:
             break
         # Normal step is 1, but we make recent days print more dots
