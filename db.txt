@@ -317,11 +317,11 @@ Sa 21 bleue    6a  --  20% (à réessayer)
 
 ### 4 december 2016: Issy
 
-Sa 6-18 rouge    5b OK
-Sa 6-9  violette 5c OK
-Sa 6-9  orange   6a --  70%
-Sa 6-8  verte    6a OK
-Sa 5-10 jaune    6a OK
-Sa 5-11 orange   6a OK
-Sa 2-11 rose     5c --  60% (trop crevé sur un mouvement difficile)
+Sa 6.18 rouge    5b OK
+Sa 6.9  violette 5c OK
+Sa 6.9  orange   6a --  70%
+Sa 6.8  verte    6a OK
+Sa 5.10 jaune    6a OK
+Sa 5.11 orange   6a OK
+Sa 2.11 rose     5c --  60% (trop crevé sur un mouvement difficile)
 
