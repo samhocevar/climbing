@@ -18,7 +18,7 @@ class Database:
             if not l:
                 continue
 
-            r = r'\s*(\w*)\s*(\w*)\s*(\w*)\s*([+/0-9a-z]*)\s*(OK|--)\s*(.*)'
+            r = r'\s*(\w*)\s*([^\s]*)\s*(\w*)\s*([+/0-9a-z]*)\s*(OK|--)\s*(.*)'
             m = re.match(r, l)
             if m:
                 name, route, color, grade, result, comm = m.groups(1)
@@ -141,11 +141,14 @@ class Database:
         # Print stats variation
         #
         print('<tr><td style="background:#222" colspan="2"></td><th>Perf</th>')
+        is_first_day = True
         for d in self.all_days():
+            out = '<td></td>'
             if self.all_perfs(d, climber_name):
-                print('<td>%+d</td>' % round(perf[d]) if perf[d] else '<td>=</td>')
-            else:
-                print('<td></td>')
+                if not is_first_day:
+                    out = '<td style="color:#%s">%+d</td>' % ('6d7' if perf[d] > 0 else 'ec6' if perf[d] > -10 else 'f66', round(perf[d])) if perf[d] else '<td>=</td>'
+                is_first_day = False
+            print(out)
         print('</tr>')
 
         print('</table>')
