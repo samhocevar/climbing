@@ -51,10 +51,11 @@ class Database:
 
     def print_history(self, climber_name):
         print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')
-        volume = {}
+        volume, perf = {}, {}
         for d in self.all_days():
             print('<th>%s</th>' % (datetime.date.fromtimestamp(d).strftime('%d/%m') if self.all_perfs(d, climber_name) else ''))
             volume[d] = [0, 0]
+            perf[d] = 0
         print('</tr>')
 
         for gn in reversed(tools.all_grades('4', '6b+')):
@@ -96,6 +97,7 @@ class Database:
                     prev_ratio = ratio
                     ratio = total / (weight + 1e-8)
                     history += [(d, ratio)]
+                perf[d] += 100.0 * (ratio - prev_ratio)
                 if self.all_perfs(d, climber_name):
                     total, weight = total * config.DECAY, weight * config.DECAY
                 s += '</td>\n'
@@ -133,6 +135,17 @@ class Database:
         print('<tr><td style="background:#222" colspan="2"></td><th>Vol</th>')
         for d in self.all_days():
             print('<td>%d/%d</td>' % tuple(volume[d]) if self.all_perfs(d, climber_name) else '<td></td>')
+        print('</tr>')
+
+        #
+        # Print stats variation
+        #
+        print('<tr><td style="background:#222" colspan="2"></td><th>Perf</th>')
+        for d in self.all_days():
+            if self.all_perfs(d, climber_name):
+                print('<td>%+d</td>' % round(perf[d]) if perf[d] else '<td>=</td>')
+            else:
+                print('<td></td>')
         print('</tr>')
 
         print('</table>')
