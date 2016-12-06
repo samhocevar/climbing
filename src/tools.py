@@ -5,55 +5,64 @@ import math, datetime
 import config
 
 gr2str_lut = {
-    '3':       (1,   '#f15189'),
-    '3+':      (2,   '#e13169'),
-    '4':       (3,   '#5189f1'),
-    '4+':      (4,   '#3169e1'),
-    '4b':      (4,   '#3169e1'),
-    '4+/5a':   (4.5, '#1149d1'),
-    '5a':      (5,   '#a0eea0'),
-    '5a/+':    (5.5, '#90e690'),
-    '5a+':     (6,   '#80de80'),
-    '5a+/b':   (6.5, '#70d670'),
-    '5b':      (7,   '#60ce60'),
-    '5b/+':    (7.5, '#50c650'),
-    '5b+':     (8,   '#40be40'),
-    '5b+/c':   (8.5, '#30b630'),
-    '5c':      (9,   '#20ae20'),
-    '5c/+':    (9.5, '#10a610'),
-    '5c+':    (10,   '#009e00'),
-    '5c+/6a': (10.5, '#008e00'),
-    '5c/6a':  (10.5, '#008e00'),
-    '6a':     (11,   '#eeeea0'),
-    '6a/+':   (11.5, '#e6e690'),
-    '6a+':    (12,   '#dede80'),
-    '6a+/b':  (12.5, '#d6d670'),
-    '6b':     (13,   '#cece60'),
-    '6b/+':   (13.5, '#c6c650'),
-    '6b+':    (14,   '#bebe40'),
-    '6b+/c':  (14.5, '#b6b630'),
-    '6c':     (15,   '#aeae20'),
-    '6c/+':   (15.5, '#a6a610'),
-    '6c+':    (16,   '#9e9e00'), # LOL
-    '6c+/7a': (16.5, '#969600'),
-    '7a':     (17,   '#a0eeee'),
-    '7a/+':   (17.5, '#90e6e6'),
-    '7a+':    (18,   '#80dede'),
-    '7a+/b':  (18.5, '#70d6d6'),
-    '7b':     (19,   '#60cece'),
-    '7b/+':   (19.5, '#50c6c6'),
-    '7b+':    (20,   '#40bebe'),
-    '7b+/c':  (20.5, '#30b6b6'),
-    '7c':     (21,   '#20aeae'),
-    '7c/+':   (21.5, '#10a6a6'),
-    '7c+':    (22,   '#009e9e'),
-    '8a':     (23,   '#eea0ee'),
-    '8a+':    (24,   '#de80de'),
-    '8b':     (25,   '#ce60ce'),
-    '8b+':    (26,   '#be40be'),
-    '8c':     (27,   '#ae20ae'),
-    '8c+':    (28,   '#9e009e'),
+    '3':       2,
+    '3+':      3,
+    '4':       4,
+    '4+':      5,
+    '4b':      5,
+    '4+/5a':   5.5,
+
+    '5a':      6,
+    '5a/+':    6.5,
+    '5a+':     7,
+    '5a+/b':   7.5,
+    '5b':      8,
+    '5b/+':    8.5,
+    '5b+':     9,
+    '5b+/c':   9.5,
+    '5c':     10,
+    '5c/+':   10.5,
+    '5c+':    11,
+    '5c+/6a': 11.5,
+    '5c/6a':  11.5,
+
+    '6a':     12,
+    '6a/+':   12.5,
+    '6a+':    13,
+    '6a+/b':  13.5,
+    '6b':     14,
+    '6b/+':   14.5,
+    '6b+':    15,
+    '6b+/c':  15.5,
+    '6c':     16,
+    '6c/+':   16.5,
+    '6c+':    17,
+    '6c+/7a': 17.5,
+
+    '7a':     18,
+    '7a/+':   18.5,
+    '7a+':    19,
+    '7a+/b':  19.5,
+    '7b':     20,
+    '7b/+':   20.5,
+    '7b+':    21,
+    '7b+/c':  21.5,
+    '7c':     22,
+    '7c/+':   22.5,
+    '7c+':    23,
+
+    '8a':     24,
+    '8a+':    25,
+    '8b':     26,
+    '8b+':    27,
+    '8c':     28,
+    '8c+':    29,
 }
+
+def num_to_color(num):
+    x = num % 6.0
+    u, v = int(0xff - 16 * x), int(0xb0 - 28 * x)
+    return '#%2x%2x%2x' % [(u, v, u), (v, u, v), (u, u, v), (v, u, u), (u, v, v)][int(num / 6)]
 
 color_lut = {
     'beige'    : 'beige',
@@ -70,18 +79,18 @@ color_lut = {
 }
 
 def grade_to_str(grade):
-    c = gr2str_lut[grade][1] if grade in gr2str_lut else 'white'
+    c = num_to_color(gr2str_lut[grade]) if grade in gr2str_lut else 'white'
     return '<td class="round" style="color:#222;background:' + c + '">' + grade + '</td>'
 
 def grade_to_num(grade):
-    return gr2str_lut[grade][0] if grade in gr2str_lut else 0
+    return gr2str_lut[grade] if grade in gr2str_lut else 0
 
 def num_to_grade(num):
     best, bestnum = None, 0
     for key in sorted(gr2str_lut):
-        if gr2str_lut[key][0] == num:
+        if gr2str_lut[key] == num:
             return key
-        elif not best or abs(gr2str_lut[key][0] - num) < abs(gr2str_lut[best][0] - num):
+        elif not best or abs(gr2str_lut[key] - num) < abs(gr2str_lut[best] - num):
             best = key
     return best
 
@@ -89,8 +98,8 @@ def all_grades(min = '3', max = '6c+'):
     a1, a2 = grade_to_num(min), grade_to_num(max)
     k = []
     for key in gr2str_lut:
-       if gr2str_lut[key][0] >= a1 and gr2str_lut[key][0] <= a2:
-           k.append(gr2str_lut[key][0])
+       if gr2str_lut[key] >= a1 and gr2str_lut[key] <= a2:
+           k.append(gr2str_lut[key])
     return sorted(set(k))
 
 def res_to_str(result, percent, comment, important):
