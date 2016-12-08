@@ -106,10 +106,9 @@ def res_to_str(result, percent, comment, important):
     # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖
     if result == 'OK':
         color, ch = '#6d7', '✔'
-    elif percent >= 50:
-        color, ch = '#ec6', '✕'
     else:
-        color, ch = '#f66', '✕'
+        color = '#%x%x3' % (int(31 - max(percent / 75.0, 1) * 15.9), int(min(percent / 75.0, 1) * 12.9))
+        ch = '✕'
     deco = ';text-shadow:0px 0px 2px #fff' if important else ''
     #deco += ';text-decoration:underline' if important else ''
     return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default;font-weight:bold%s">%s</span>' % (comment, color, deco, ch)
@@ -163,7 +162,7 @@ def hist_to_str(history, first_day, last_day):
             style = ' color:' + color
         else:
             r = history[n1][1] * (1 - t) + history[n2][1] * t
-            color = '#%x%x3' % (int(15 - max(r * 2 - 1, 0) * 15.9), int(min(r * 2, 1) * 12.9))
+            color = '#%x%x3' % (int(31 - max(r * 2, 1) * 15.9), int(min(r * 2, 1) * 12.9))
             style = ' top:%.2fpx; color:%s' % (13 - r * 17, color)
         if int(64 * r) != int(64 * prev_r) or color != prev_color or run > 20:
             if prev_r != -1:
