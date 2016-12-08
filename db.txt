@@ -64,8 +64,8 @@ Jy 24 orange   5c+/6a --   50%
 Jo 38 blanche  5a     --   80% (pas réussi les quelques dernières prises)
 Sa 37 verte    5c+    --   80% (pas réussi la dernière prise)
 Jy 37 verte    5c+    --
-Jo 81 noire    4b     --   trop crevé
-Sa 85 verte    5b     --   trop crevé
+Jo 81 noire    4b     --   80% trop crevé
+Sa 85 verte    5b     --   80% trop crevé
 
 ### 19 october 2016: Pantin
 
@@ -215,7 +215,7 @@ Sa 73 blanche  5c/6a  OK
 Sa 71 orange   5c     OK
 Sa 62 jaune    5c+/6a OK
 Sa 66 blanche  5c+    OK
-Sa 66 rouge    5a     ET
+Sa 66 rouge    5a     OK  en tête
 Sa 24 orange   5c+/6a OK
 Sa 84 violette 6a+    --  40%
 
@@ -327,26 +327,26 @@ Sa 2.11 rose     5c --  60% (trop crevé sur un mouvement difficile)
 
 ### 7 december 2016: Pantin
 
-Jo 35 rose 5a OK
-Jy 35 rose 5a OK
-Sa 36 bleue 5c/+ OK
-Jo 35 verte 5b+ OK
-Jy 35 verte 5b+ OK
-Sa 36 orange 6b -- 10% lol
-Sa 82 verte 5c OK
-Jy 82 verte 5c OK
-Jo PG verte 5b -- 30%
-Sa PG verte 5b OK
-Jo 84 beige 5b+ -- 20%
-Jo 84 bleue 5b OK
-Sa 84 violette 6a+ -- 60%
-Sa 84 beige 5b+ OK
+Jo 35 rose     5a   OK
+Jy 35 rose     5a   OK
+Sa 36 bleue    5c/+ OK
+Jo 35 verte    5b+  OK
+Jy 35 verte    5b+  OK
+Sa 36 orange   6b   --  10% lol
+Sa 82 verte    5c   OK
+Jy 82 verte    5c   OK
+Jo PG verte    5b   --  30%
+Sa PG verte    5b   OK
+Jo 84 beige    5b+  --  20%
+Jo 84 bleue    5b   OK
+Sa 84 violette 6a+  --  60%
+Sa 84 beige    5b+  OK
 
 Sa 85 jaune 6a+ OK
-Jy 85 jaune 6a+ OK gégé gros
-Jo 34 beige 4 OK en tête
-Sa 34 bleue 6a OK
-Jy 34 bleue 6a -- 20%
-Jy 34 beige 4 OK
-Sa 84 jaune 6b -- 20%
+Jy 85 jaune 6a+ OK  gégé gros
+Jo 34 beige 4   OK  en tête
+Sa 34 bleue 6a  OK
+Jy 34 bleue 6a  --  20%
+Jy 34 beige 4   OK
+Sa 84 jaune 6b  --  20%
 
