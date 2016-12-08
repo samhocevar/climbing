@@ -51,9 +51,10 @@ class Database:
 
     def print_history(self, climber_name):
         print('<table><tr><th>Grade</th><th>Trend</th><th>Avg</th>')
+        climber_days = [d for d in self.all_days() if self.all_perfs(d, climber_name)]
         volume, perf = {}, {}
-        for d in self.all_days():
-            print('<th>%s</th>' % (datetime.date.fromtimestamp(d).strftime('%d/%m') if self.all_perfs(d, climber_name) else ''))
+        for d in climber_days:
+            print('<th>%s</th>' % (datetime.date.fromtimestamp(d).strftime('%d/%m')))
             volume[d] = [0, 0]
             perf[d] = 0
         print('</tr>')
@@ -66,11 +67,13 @@ class Database:
             print('<tr>\n  ' + tools.grade_to_str(g))
             history, total, weight, ratio, prev_ratio = [], 0, 0, 0, 0
             s = ''
-            for d in self.all_days():
+            for d in climber_days:
                 s += '  <td>'
                 for name, gym, route, color, grade, result, comm in self.all_perfs(d, climber_name):
                     graden = tools.grade_to_num(grade)
-                    if abs(graden - gn) < 1:
+                    delta = abs(graden - gn)
+                    if delta < 1:
+                        # If category is close to this route’s grade, its stats are directly affected
                         percent = int(comm[0:comm.find('%')]) if comm and re.match('^\d+%', comm) else 0
                         comm = ': %s' % comm if comm else ''
                         name = '[%s] ' % name if not climber_name else ''
@@ -79,19 +82,21 @@ class Database:
                         if graden >= gn:
                             important = graden > gn
                             s += tools.res_to_str(result, percent, '%s%s %s %s (%s)%s' % (name, gym, route, color, grade, comm), important)
-                        k = 1 - abs(graden - gn)
+                        t = 1 - delta
                         if result == 'OK':
-                            total += k
-                            volume[d][0] += k
+                            total += t
+                            volume[d][0] += t
                         elif percent >= 50:
-                            total += k * config.HALF_ROUTE_WEIGHT
-                            volume[d][0] += k * 0.5
-                        weight += k
-                        volume[d][1] += k
+                            total += t * config.HALF_ROUTE_WEIGHT
+                            volume[d][0] += t * 0.5
+                        weight += t
+                        volume[d][1] += t
                     elif graden > gn and result == 'OK':
+                        # If route was sent it counts as a success for lower grades, too
                         total += config.OTHER_GRADE_WEIGHT
                         weight += config.OTHER_GRADE_WEIGHT
                     elif graden < gn and result != 'OK':
+                        # If route was failed it counts as a failure for higher grades, too
                         weight += config.OTHER_GRADE_WEIGHT
                 if self.all_perfs(d, climber_name):
                     prev_ratio = ratio
@@ -109,7 +114,7 @@ class Database:
         # Print best / average route
         #
         best, avg = {}, {}
-        for d in self.all_days():
+        for d in climber_days:
             best[d] = None
             avg[d] = []
             for name, gym, route, color, grade, result, comm in self.all_perfs(d, climber_name):
@@ -119,13 +124,13 @@ class Database:
                     avg[d].append(tools.grade_to_num(grade))
 
         print('<tr><td style="background:#222" colspan="2"></td><th>Avg</th>')
-        for d in self.all_days():
+        for d in climber_days:
             avg_num = sum(avg[d]) / len(avg[d]) if avg[d] else 0
             print(tools.grade_to_str(tools.num_to_grade(avg_num)) if avg_num else '<td></td>')
         print('</tr>')
 
         print('<tr><td style="background:#222" colspan="2"></td><th>Best</th>')
-        for d in self.all_days():
+        for d in climber_days:
             print(tools.grade_to_str(best[d]) if best[d] else '<td></td>')
         print('</tr>')
 
@@ -133,7 +138,7 @@ class Database:
         # Print daily volume
         #
         print('<tr><td style="background:#222" colspan="2"></td><th>Vol</th>')
-        for d in self.all_days():
+        for d in climber_days:
             print('<td>%d/%d</td>' % tuple(volume[d]) if self.all_perfs(d, climber_name) else '<td></td>')
         print('</tr>')
 
@@ -142,11 +147,10 @@ class Database:
         #
         print('<tr><td style="background:#222" colspan="2"></td><th>Perf</th>')
         is_first_day = True
-        for d in self.all_days():
+        for d in climber_days:
             out = '<td></td>'
-            if self.all_perfs(d, climber_name):
-                if not is_first_day:
-                    out = '<td style="color:#%s">%+d</td>' % ('6d7' if perf[d] > 0 else 'ec6' if perf[d] > -10 else 'f66', round(perf[d])) if perf[d] else '<td>=</td>'
+            if not is_first_day:
+                out = '<td style="color:#%s">%+d</td>' % ('6d7' if perf[d] > 0 else 'ec6' if perf[d] > -10 else 'f66', round(perf[d])) if perf[d] else '<td>=</td>'
                 is_first_day = False
             print(out)
         print('</tr>')
