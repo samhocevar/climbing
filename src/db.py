@@ -151,7 +151,7 @@ class Database:
             out = '<td></td>'
             if not is_first_day:
                 out = '<td style="color:#%s">%+d</td>' % ('6d7' if perf[d] > 0 else 'ec6' if perf[d] > -10 else 'f66', round(perf[d])) if perf[d] else '<td>=</td>'
-                is_first_day = False
+            is_first_day = False
             print(out)
         print('</tr>')
 
