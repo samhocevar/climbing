@@ -80,8 +80,11 @@ class Database:
                         if config.ENGLISH and color in tools.color_lut:
                             color = tools.color_lut[color]
                         if graden >= gn:
-                            important = graden > gn
-                            s += tools.res_to_str(result, percent, '%s%s %s %s (%s)%s' % (name, gym, route, color, grade, comm), important)
+                            r = tools.res_to_str(result, percent, '%s%s %s %s (%s)%s' % (name, gym, route, color, grade, comm))
+                            if graden > gn:
+                                s += '<span style="position:relative;left:0px;top:-13px;">' + r + '</span>'
+                            else:
+                                s += r
                         t = 1 - delta
                         if result == 'OK':
                             total += t
@@ -184,7 +187,7 @@ class Database:
                     continue
                 key = (gym, route, color, grade)
                 percent = int(comm[0:comm.find('%')]) if comm and re.match('^\d+%', comm) else 0
-                aggregated[key][name] += tools.res_to_str(result, percent, datetime.date.fromtimestamp(d).strftime('%d/%m') + (': ' + comm if comm else ''), False)
+                aggregated[key][name] += tools.res_to_str(result, percent, datetime.date.fromtimestamp(d).strftime('%d/%m') + (': ' + comm if comm else ''))
                 if comm:
                     if comments[key][name]:
                         comments[key][name] += ' — '

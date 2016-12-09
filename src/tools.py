@@ -102,16 +102,14 @@ def all_grades(min = '3', max = '6c+'):
            k.append(gr2str_lut[key])
     return sorted(set(k))
 
-def res_to_str(result, percent, comment, important):
+def res_to_str(result, percent, comment):
     # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖
     if result == 'OK':
         color, ch = '#6d7', '✔'
     else:
         color = '#%x%x3' % (int(31 - max(percent / 75.0, 1) * 15.9), int(min(percent / 75.0, 1) * 12.9))
         ch = '✕'
-    deco = ';text-shadow:0px 0px 2px #fff' if important else ''
-    #deco += ';text-decoration:underline' if important else ''
-    return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default;font-weight:bold%s">%s</span>' % (comment, color, deco, ch)
+    return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default;font-weight:bold">%s</span>' % (comment, color, ch)
 
 def route_to_str(route, color):
     lut = { 'beige':    ['#d97', '#000'],

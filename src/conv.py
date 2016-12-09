@@ -19,7 +19,7 @@ body {
     background: #222;
     color: #eee;
     font-family: sans-serif;
-    margin: 30px 80px;
+    margin: 30px 60px;
 }
 
 table {
@@ -101,10 +101,7 @@ function nav_tab(direction) {
 }
 document.onkeydown = function(e) {
     var e = e || window.event;
-    if (e.which == 37) { // left
-        nav_tab(-1);
-    }
-    else if (e.which == 39) { // right
+    if (e.which == 78) {
         nav_tab(1);
     }
 }
