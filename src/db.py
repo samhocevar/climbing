@@ -59,7 +59,7 @@ class Database:
             perf[d] = 0
         print('</tr>')
 
-        for gn in reversed(tools.all_grades('4', '6b+')):
+        for gn in reversed(tools.all_grades('4', '6c')):
             # Only print lines for integer scores
             if gn != int(gn):
                 continue

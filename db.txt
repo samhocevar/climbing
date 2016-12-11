@@ -350,3 +350,19 @@ Jy 34 bleue 6a  --  20%
 Jy 34 beige 4   OK
 Sa 84 jaune 6b  --  20%
 
+### 11 december 2016: Pantin
+
+Sa 82 orange   6a     OK
+Sa 84 violette 6a+    --  70%
+Sa 66 verte    5c     OK
+Sa 67 jaune    6c     --  90%
+Sa 62 jaune    5c+/6a OK
+Sa 21 bleue    6a     --  30%
+Sa 21 violette 5b     OK
+Sa 85 beige    5c+    OK
+Sa 83 jaune    6b     --  25%
+Sa 61 noire    6a     --  15% un peu mieux
+Sa 38 blanche  5a     OK  en tête
+Sa 38 rose     6a+    --  40%
+Sa 37 verte    5c+    OK
+
