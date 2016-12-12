@@ -89,8 +89,9 @@ class Database:
                         if result == 'OK':
                             total += t
                             volume[d][0] += t
-                        elif percent >= 50:
-                            total += t * config.HALF_ROUTE_WEIGHT
+                        #elif percent >= 50:
+                        else:
+                            total += t * percent / 100 * config.PARTIAL_ROUTE_WEIGHT
                             volume[d][0] += t * 0.5
                         weight += t
                         volume[d][1] += t

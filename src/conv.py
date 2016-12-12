@@ -22,10 +22,6 @@ body {
     margin: 30px 60px;
 }
 
-table {
-    margin: 30px 0px;
-}
-
 a {
     color: #555;
 }
@@ -123,6 +119,7 @@ print('<span style="margin:0 20px">')
 print(button % ('All', 'All', 'All'))
 print('</span>')
 
+print('<h2>History</h2>')
 for name in db.all_names() + [None]:
     print('<div class="history" id="%s">' % (name or 'All'))
     db.print_history(name)
@@ -130,6 +127,10 @@ for name in db.all_names() + [None]:
 
 print('<script>open_tab("%s")</script>' % (db.all_names()[0]))
 
+#print('<h2>Suggestions</h2>')
+#db.print_suggestions(name)
+
+print('<h2>All Routes</h2>')
 wanted_names = []
 for name in db.all_names():
     wanted_names += [name]
