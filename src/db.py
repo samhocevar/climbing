@@ -193,42 +193,30 @@ class Database:
                         summary[key] = max(summary[key], 2)
                     aggregated[key] += tools.res_to_str(result, percent, datetime.date.fromtimestamp(d).strftime('%d/%m') + (': ' + comm if comm else ''))
 
-        print('<div style="float: left; margin-right: 30px;">')
-        print('<h2>To consolidate: %s %s</h2>' % (tools.grade_to_str(tools.num_to_grade(first - 2), 'span'),
-                                                  tools.grade_to_str(tools.num_to_grade(first - 1), 'span')))
-        print('<table><tr><th>Gym</th><th>Route</th><th>Grade</th><th></th></tr>')
-        for gn in reversed(tools.all_grades('3', '6c+')):
-            for key, val in sorted(summary.items()):
-                gym, route, color, grade = key
-                if tools.grade_to_num(grade) != gn:
-                    continue
-                if val not in [0, 1] or tools.grade_to_num(grade) > first - 1:
-                    continue
-                if val == 0 and tools.grade_to_num(grade) < first - 2:
-                    continue
-                print('<tr><td>' + gym + '</td>\n  ' + tools.route_to_str(route, color) + '\n  ' + tools.grade_to_str(grade, 'td'))
-                print('  <td>' + aggregated[key] + '</td>')
-                print('</tr>')
-        print('</table>')
-        print('</div>')
-
-        print('<div>')
-        print('<h2>To improve: %s %s</h2>' % (tools.grade_to_str(tools.num_to_grade(first), 'span'),
-                                              tools.grade_to_str(tools.num_to_grade(first + 1), 'span')))
-        print('<table><tr><th>Gym</th><th>Route</th><th>Grade</th><th></th></tr>')
-        for gn in reversed(tools.all_grades('3', '6c+')):
-            for key, val in sorted(summary.items()):
-                gym, route, color, grade = key
-                if tools.grade_to_num(grade) != gn:
-                    continue
-                if val not in [0, 1] or tools.grade_to_num(grade) > first + 1 \
-                                     or tools.grade_to_num(grade) <= first - 1:
-                    continue
-                print('<tr><td>' + gym + '</td>\n  ' + tools.route_to_str(route, color) + '\n  ' + tools.grade_to_str(grade, 'td'))
-                print('  <td>' + aggregated[key] + '</td>')
-                print('</tr>')
-        print('</table>')
-        print('</div>')
+        print('<hr style="opacity:0;clear:both"/>')
+        cat = [("Consolidate", False, 0, first - 1),
+               ("Improve",     False, first - 1, first),
+               ("Maybe",       True,  first, first + 1)]
+        for title, last, a, b in cat:
+            print('<div style="margin-right: 30px; float:left">' if not last else '<div>')
+            print('<h2>%s: %s</h2>' % (title, tools.grade_to_str(tools.num_to_grade(b), 'span')))
+            print('<table><tr><th>Gym</th><th>Route</th><th>Grade</th><th></th></tr>')
+            for gn in reversed(tools.all_grades('3', '6c+')):
+                for key, val in sorted(summary.items()):
+                    gym, route, color, grade = key
+                    if tools.grade_to_num(grade) != gn:
+                        continue
+                    if val == 0 and tools.grade_to_num(grade) < first - 2:
+                        continue
+                    if val not in [0, 1] or tools.grade_to_num(grade) > b \
+                                         or tools.grade_to_num(grade) <= a:
+                        continue
+                    print('<tr><td>' + gym + '</td>\n  ' + tools.route_to_str(route, color) + '\n  ' + tools.grade_to_str(grade, 'td'))
+                    print('  <td>' + aggregated[key] + '</td>')
+                    print('</tr>')
+            print('</table>')
+            print('</div>')
+        print('<hr style="opacity:0;clear:both"/>')
 
 
     def print_routes(self, wanted_names, with_notes=True):

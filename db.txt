@@ -348,7 +348,7 @@ Jo 34 beige 4   OK  en tête
 Sa 34 bleue 6a  OK
 Jy 34 bleue 6a  --  20%
 Jy 34 beige 4   OK
-Sa 84 jaune 6b  --  20%
+Sa 83 jaune 6b  --  20%
 
 ### 11 december 2016: Pantin
 
