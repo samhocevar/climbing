@@ -108,7 +108,7 @@ def res_to_str(result, percent, comment):
         color, ch = '#6d7', '✔'
     else:
         color = '#%x%x3' % (int(31 - max(percent / 75.0, 1) * 15.9), int(min(percent / 75.0, 1) * 12.9))
-        ch = '✕'
+        ch = '✗'
     return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default;font-weight:bold">%s</span>' % (comment, color, ch)
 
 def route_to_str(route, color):
