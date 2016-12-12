@@ -78,9 +78,9 @@ color_lut = {
     'violette' : 'purple',
 }
 
-def grade_to_str(grade):
+def grade_to_str(grade, entity):
     c = num_to_color(gr2str_lut[grade]) if grade in gr2str_lut else 'white'
-    return '<td class="round" style="color:#222;background:' + c + '">' + grade + '</td>'
+    return '<%s class="round" style="color:#222;background:%s">%s</%s>' % (entity, c, grade, entity)
 
 def grade_to_num(grade):
     return gr2str_lut[grade] if grade in gr2str_lut else 0

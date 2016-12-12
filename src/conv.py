@@ -57,6 +57,8 @@ table {
     font-weight: bold;
 }
 
+span.round { padding: 2px; border-radius: 4px; }
+
 td.round { border-radius: 4px; }
 table tr:last-child td.round:first-child { border-bottom-left-radius: 4px; }
 table tr:last-child td.round:last-child { border-bottom-right-radius: 4px; }
@@ -123,12 +125,10 @@ print('<h2>History</h2>')
 for name in db.all_names() + [None]:
     print('<div class="history" id="%s">' % (name or 'All'))
     db.print_history(name)
+    db.print_suggestions(name)
     print('</div>')
 
 print('<script>open_tab("%s")</script>' % (db.all_names()[0]))
-
-#print('<h2>Suggestions</h2>')
-#db.print_suggestions(name)
 
 print('<h2>All Routes</h2>')
 wanted_names = []
