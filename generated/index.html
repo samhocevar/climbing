@@ -63,7 +63,7 @@ function open_tab(id) {
         l[i].style.color = "#555";
         //l[i].class = "tab";
     }
-    document.getElementById(id).style.display = "block";
+    document.getElementById('hist' + id).style.display = "block";
     document.getElementById('tab' + id).style.backgroundColor = "#555";
     document.getElementById('tab' + id).style.color = "#bbb";
     //document.getElementById('tab' + id).class = "tab active-tab";
@@ -79,10 +79,16 @@ function nav_tab(direction) {
     var n = l.length - 1; // don’t cycle through the “All” button
     for (var i = 0; i < n; ++i) {
         if (l[i].style.display == "block") {
-            open_tab(l[(i + direction + n) % n].id);
+            var name = l[(i + direction + n) % n].id.replace(/^hist/,'');
+            window.location.hash = "#" + name;
+            open_tab(name);
             return;
         }
     }
+}
+function refresh_tabs() {
+    var name = window.location.hash.replace(/^#/,'');
+    open_tab(name);
 }
 document.onkeydown = function(e) {
     var e = e || window.event;
@@ -96,16 +102,16 @@ document.onkeydown = function(e) {
 
 <span>
 <a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(-1)"><span class="tab">◀</span></a>
-<a href="javascript:void(0)" onClick="open_tab('Jo')"><span class="tab" id="tabJo">Jo</span></a> 
-<a href="javascript:void(0)" onClick="open_tab('Jy')"><span class="tab" id="tabJy">Jy</span></a> 
-<a href="javascript:void(0)" onClick="open_tab('Sa')"><span class="tab" id="tabSa">Sa</span></a> 
+<a href="#Jo" onClick="open_tab('Jo')"><span class="tab" id="tabJo">Jo</span></a>
+<a href="#Jy" onClick="open_tab('Jy')"><span class="tab" id="tabJy">Jy</span></a>
+<a href="#Sa" onClick="open_tab('Sa')"><span class="tab" id="tabSa">Sa</span></a>
 <a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(1)"><span class="tab">▶</span></a>
 </span>
 <span style="margin:0 20px">
-<a href="javascript:void(0)" onClick="open_tab('All')"><span class="tab" id="tabAll">All</span></a> 
+<a href="#All" onClick="open_tab('All')"><span class="tab" id="tabAll">All</span></a>
 </span>
 <h2>History</h2>
-<div class="history" id="Jo">
+<div class="history" id="histJo">
 <table><tr><th>Grade</th><th>Trend</th><th>Avg</th>
 <th>12/10</th>
 <th>19/10</th>
@@ -902,7 +908,7 @@ title="09/12: 100%" style="position:relative; top:-4.00px; color:#0c3">•••
 </div>
 <hr style="opacity:0;clear:both"/>
 </div>
-<div class="history" id="Jy">
+<div class="history" id="histJy">
 <table><tr><th>Grade</th><th>Trend</th><th>Avg</th>
 <th>12/10</th>
 <th>19/10</th>
@@ -1813,7 +1819,7 @@ title="09/12: 100%" style="position:relative; top:-4.00px; color:#0c3">•••
 </div>
 <hr style="opacity:0;clear:both"/>
 </div>
-<div class="history" id="Sa">
+<div class="history" id="histSa">
 <table><tr><th>Grade</th><th>Trend</th><th>Avg</th>
 <th>29/09</th>
 <th>05/10</th>
@@ -2867,7 +2873,7 @@ style="color:white">/</span></span></span></td>
 </div>
 <hr style="opacity:0;clear:both"/>
 </div>
-<div class="history" id="All">
+<div class="history" id="histAll">
 <table><tr><th>Grade</th><th>Trend</th><th>Avg</th>
 <th>29/09</th>
 <th>05/10</th>
@@ -4168,7 +4174,7 @@ style="color:white">/</span></span></span></td>
 </div>
 <hr style="opacity:0;clear:both"/>
 </div>
-<script>open_tab("Jo")</script>
+<script>refresh_tabs()</script>
 <h2>All Routes</h2>
 <table><tr><th>Gym</th><th>Route</th><th>Grade</th>
 <th class="notes notesJo notesAll">Jo</th>
@@ -5188,7 +5194,7 @@ style="color:white">/</span></span></span></td>
   <td class="notes notesSa"></td>
 </tr>
 </table>
-<script>open_tab("Jo")</script>
+<script>refresh_tabs()</script>
 
 </body>
 </html>

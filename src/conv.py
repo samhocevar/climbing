@@ -76,7 +76,7 @@ function open_tab(id) {
         l[i].style.color = "#555";
         //l[i].class = "tab";
     }
-    document.getElementById(id).style.display = "block";
+    document.getElementById('hist' + id).style.display = "block";
     document.getElementById('tab' + id).style.backgroundColor = "#555";
     document.getElementById('tab' + id).style.color = "#bbb";
     //document.getElementById('tab' + id).class = "tab active-tab";
@@ -92,10 +92,16 @@ function nav_tab(direction) {
     var n = l.length - 1; // don’t cycle through the “All” button
     for (var i = 0; i < n; ++i) {
         if (l[i].style.display == "block") {
-            open_tab(l[(i + direction + n) % n].id);
+            var name = l[(i + direction + n) % n].id.replace(/^hist/,'');
+            window.location.hash = "#" + name;
+            open_tab(name);
             return;
         }
     }
+}
+function refresh_tabs() {
+    var name = window.location.hash.replace(/^#/,'');
+    open_tab(name);
 }
 document.onkeydown = function(e) {
     var e = e || window.event;
@@ -110,25 +116,26 @@ document.onkeydown = function(e) {
 
 db = db.Database()
 
-button = '''<a href="javascript:void(0)" onClick="open_tab('%s')"><span class="tab" id="tab%s">%s</span></a> '''
+button = '''<a href="#%s" onClick="open_tab('%s')"><span class="tab" id="tab%s">%s</span></a>'''
 print('<span>')
 print('<a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(-1)"><span class="tab">◀</span></a>')
 for name in db.all_names():
-    print(button % (name, name, name))
+    print(button % (name, name, name, name))
 print('<a style="text-decoration:none" href="javascript:void(0)" onClick="nav_tab(1)"><span class="tab">▶</span></a>')
 print('</span>')
 print('<span style="margin:0 20px">')
-print(button % ('All', 'All', 'All'))
+#print(button % ('All', 'All', 'All', 'All'))
+print(button % tuple('All' for x in range(4)))
 print('</span>')
 
 print('<h2>History</h2>')
 for name in db.all_names() + [None]:
-    print('<div class="history" id="%s">' % (name or 'All'))
+    print('<div class="history" id="hist%s">' % (name or 'All'))
     db.print_history(name)
     db.print_suggestions(name)
     print('</div>')
 
-print('<script>open_tab("%s")</script>' % (db.all_names()[0]))
+print('<script>refresh_tabs()</script>')
 
 print('<h2>All Routes</h2>')
 wanted_names = []
@@ -136,7 +143,7 @@ for name in db.all_names():
     wanted_names += [name]
 db.print_routes(wanted_names)
 
-print('<script>open_tab("%s")</script>' % (db.all_names()[0]))
+print('<script>refresh_tabs()</script>')
 
 print("""
 </body>
