@@ -12,5 +12,5 @@ clean:
 	rm -f $(HTML)
 
 generated/index.html: $(SRC)
-	cat $^ /dev/null | $(CONV) > $@
+	(cat $^ /dev/null; sed 's/[^#]*/Xx & OK /' routes.txt) | $(CONV) > $@
 
