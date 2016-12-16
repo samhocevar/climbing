@@ -103,13 +103,21 @@ def all_grades(min = '3', max = '6c+'):
     return sorted(set(k))
 
 def res_to_str(result, percent, comment):
-    # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖
+    # Other character choices: █ ▒ ✔ ☒ ✗ × ☐ ✘ ∅ ✖ ✅ ★ ☆
+    if 'en tête' in comment:
+        #l = ['♥', '♡']
+        l = ['★', '☆☆']
+    else:
+        #l = ['■', '□']
+        #l = ['◆', '◇']
+        l = ['⚫', '⚪']
     if result == 'OK':
-        color, ch = '#6d7', '✔'
+        color, ch = '#6d7', l[0]
     else:
         color = '#%x%x3' % (int(31 - max(percent / 75.0, 1) * 15.9), int(min(percent / 75.0, 1) * 12.9))
-        ch = '✗'
-    return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default;font-weight:bold">%s</span>' % (comment, color, ch)
+        ch = l[1]
+    return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default">%s</span>' % (comment, color, ch)
+    #return '<span title="%s" style="color:%s;font-size:1.0em;cursor:default;font-weight:bold">%s</span>' % (comment, color, ch)
 
 def route_to_str(route, color):
     lut = { 'beige':    ['#d97', '#000'],

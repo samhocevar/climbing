@@ -13,6 +13,6 @@ clean:
 
 generated/index.html: $(SRC)
 	(cat $^ /dev/null; \
-	 sed 's/[^#]*/Zz & OK /' routes.txt; \
-	 sed 's/^[A-Za-z][^ ]*/Zz/; s/\(--\|OK\).*/OK/' $^ /dev/null) | $(CONV) > $@
+	 sed 's/[^#]*/Zz & OK en tête/' routes.txt; \
+	 sed 's/^[A-Za-z][^ ]*/Zz/; s/\(--\|OK\).*/OK en tête/' $^ /dev/null) | $(CONV) > $@
 
