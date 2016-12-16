@@ -12,5 +12,7 @@ clean:
 	rm -f $(HTML)
 
 generated/index.html: $(SRC)
-	(cat $^ /dev/null; sed 's/[^#]*/Ondra & OK /' routes.txt) | $(CONV) > $@
+	(cat $^ /dev/null; \
+	 sed 's/[^#]*/Zz & OK /' routes.txt; \
+	 sed 's/^[A-Za-z][^ ]*/Zz/; s/\(--\|OK\).*/OK/' $^ /dev/null) | $(CONV) > $@
 

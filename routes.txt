@@ -134,9 +134,9 @@
 84 beige 5b+
 84 bleue 5b
 84 violette 6a+
-85 jaune 6a+
-85 rouge 5a
-85 verte 5b # « la » verte
+85 jaune 6a+ # disparue décembre 2016
+85 rouge 5a # disparue décembre 2016
+85 verte 5b # « la » verte # disparue décembre 2016
 
 95 blanche 6c+/7a
 96 bleue 5b
@@ -160,5 +160,5 @@
 102 jaune 6b
 102 verte 6c+/7a
 
-pilier_gris jaune 4+
-pilier_gris verte 5b
+PG jaune 4+
+PG verte 5b

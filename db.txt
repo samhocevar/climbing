@@ -237,15 +237,15 @@ Sa 46 blanche  6a+   --  30%
 Jy 66 bleue    4+     OK
 Sa 66 blanche  5c+    OK
 Jy 66 blanche  5c+    --  20%
-Jy 65 rouge    5b+    --  30%
+Jy 64 rouge    5b+    --  30%
 Sa 65 rose     6a/+   --  20%
 Jy 66 verte    5b     OK
 Jo 66 verte    5b     OK
 Sa 84 violette 6a+    --  40%
-Jy 30 jaune    5c+    --  60%
+Jy 32 jaune    5c+    --  60%
 Jo 26 jaune    5a     OK
-Sa 30 jaune    5c+    --  70%
-Jy 30 jaune    5c+    --  60%
+Sa 32 jaune    5c+    --  70%
+Jy 32 jaune    5c+    --  60%
 Jo 50 noire    5a     OK
 Sa 50 bleue    6a     OK
 Sa 50 saumon   5c+    OK
@@ -253,11 +253,11 @@ Jo 63 verte    5b     --  70%
 Jy 63 verte    5b     OK
 Sa 62 jaune    5c+/6a OK
 
-Sa 61 noire   6a  --  10% lol
+Sa 62 noire   6a  --  10% lol
 Sa 46 blanche 6a+ --  30%
 Jo 78 verte   5a  OK
 Jy 78 verte   5a  OK
-Sa 30 jaune   5c+ --  90%
+Sa 32 jaune   5c+ --  90%
 Jo 23 bleue   5c  --  20%
 Jy 23 bleue   5c  --  50%
 
@@ -361,39 +361,39 @@ Sa 21 bleue    6a     --  30%
 Sa 21 violette 5b     OK
 Sa 85 beige    5c+    OK
 Sa 83 jaune    6b     --  25%
-Sa 61 noire    6a     --  15% un peu mieux
+Sa 62 noire    6a     --  15% un peu mieux
 Sa 38 blanche  5a     OK  en tête
 Sa 38 rose     6a+    --  40%
 Sa 37 verte    5c+    OK
 
 ### 15 december 2016: Pantin
 
-Jo 85 violette 5b OK
-Jy 85 saumon 5c+ -- 70%
-Sa 84 bleue 5b OK en tête
-Sa 35 violette 6c -- 50%
-Jo 35 verte 5b+ OK
-Jy 85 saumon 5c+ -- 71%
-Sa 84 orange 6b+ -- 70%
-Jo 73 noire 5b OK
-Jy 73 blanche 5c/6a OK
-Sa 70 violette 5c OK en tête
-Jo 70 violette 5c -- 70%
-Jy 70 violette 5c OK
-Jo 67 violette 5a -- 20% en tête
-Sa 67 violette 5a OK en tête
-Sa 67 orange 6b -- 20%
+Jo 85 violette 5b    OK
+Jy 85 saumon   5c+   --  70%
+Sa 84 bleue    5b    OK  en tête
+Sa 35 violette 6c    --  50%
+Jo 35 verte    5b+   OK
+Jy 85 saumon   5c+   --  71%
+Sa 84 orange   6b+   --  70%
+Jo 73 noire    5b    OK
+Jy 73 blanche  5c/6a OK
+Sa 70 violette 5c    OK  en tête
+Jo 70 violette 5c    --  70%
+Jy 70 violette 5c    OK
+Jo 67 violette 5a    --  20% en tête
+Sa 67 violette 5a    OK  en tête
+Sa 67 orange   6b    --  20%
 
-Sa 38 rose     6a+    --  40%
-Sa 37 verte    5c+    OK
-Jo 36 blanche 5a+ OK
-Jy 36 bleue 5c/+ OK
-Sa 84 orange 6b+ -- 80%
-Jo 78 verte 5a OK
-Sa 67 jaune 6c -- 50%
-Jo 67 violette 5a -- 20%
-Sa 65 noire 6a OK
-Jo 52 beige 5a+ -- 60%
-Sa 50 saumon 5c+ OK en tête
-Sa 50 bleue 6a -- 50% trop crevé
+Sa 38 rose     6a+  --  40%
+Sa 37 verte    5c+  OK
+Jo 36 blanche  5a+  OK
+Jy 36 bleue    5c/+ OK
+Sa 84 orange   6b+  --  80%
+Jo 78 verte    5a   OK
+Sa 67 jaune    6c   --  50%
+Jo 67 violette 5a   --  20%
+Sa 65 noire    6a   OK
+Jo 52 beige    5a+  --  60%
+Sa 50 saumon   5c+  OK  en tête
+Sa 50 bleue    6a   --  50% trop crevé
 
